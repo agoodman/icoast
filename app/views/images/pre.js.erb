@@ -5,3 +5,5 @@ gPreImageId = <%= @image.id %>;
 $("#pre-thumb0").attr("src","<%= @thumbs[0] %>");
 $("#pre-thumb1").attr("src","<%= @thumbs[1] %>");
 $("#pre-thumb2").attr("src","<%= @thumbs[2] %>");
+
+$(".pre h1").html("PRE-STORM at (<%= @image.latitude %>, <%= @image.longitude %>)");

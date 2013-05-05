@@ -37,7 +37,7 @@ class ImagesController < ApplicationController
   def load_thumbs
     @thumbs = []
     @thumbs[0] = Image.where(pre: @image.pre).where('taken_at < ?',@image.taken_at).order('taken_at desc').limit(1).first.thumb_url rescue nil
-    @thumbs[1] = @image.thumb_url
+    @thumbs[1] = @image.thumb_url rescue nil
     @thumbs[2] = Image.where(pre: @image.pre).where('taken_at < ?',@image.taken_at).order('taken_at desc').limit(1).first.thumb_url rescue nil
   end
   

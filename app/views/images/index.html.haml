@@ -4,6 +4,7 @@
 			%option{value: opt}= opt
 %section
 	.pre
+		%h1 PRE
 		%img#pre{src: @pre_images.first.full_url}
 		%button#prev-pre PREV
 		%ul.thumbs#pre-thumbs
@@ -18,7 +19,8 @@
 		%button#find-pre < Find Pre
 		%button#find-post Find Post >
 	.post
-		%img#post{src: @post_images.first.full_url || "http://placekitten.com/300/200"}
+		%h1 POST
+		%img#post{src: @post_images.first.full_url}
 		%button#prev-post PREV
 		%ul.thumbs#post-thumbs
 			%li

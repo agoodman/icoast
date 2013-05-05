@@ -8,5 +8,7 @@ Usgs::Application.routes.draw do
       get :nearest_post
     end
   end
+  
+  root to: 'images#index'
 
 end
