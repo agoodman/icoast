@@ -4,12 +4,15 @@
 			%option{value: opt}= opt
 %section
 	.pre
-		%img#pre{src: @pre_images.first.full_url || "http://placekitten.com/300/200"}
+		%img#pre{src: @pre_images.first.full_url}
 		%button#prev-pre PREV
 		%ul.thumbs#pre-thumbs
-			- 3.times do
-				%li
-					%img{src: "http://placekitten.com/160/120"}
+			%li
+				%img#pre-thumb0{src: nil}
+			%li
+				%img#pre-thumb1{src: nil}
+			%li
+				%img#pre-thumb2{src: nil}
 		%button#next-pre NEXT
 	.actions
 		%button#find-pre < Find Pre
@@ -18,9 +21,12 @@
 		%img#post{src: @post_images.first.full_url || "http://placekitten.com/300/200"}
 		%button#prev-post PREV
 		%ul.thumbs#post-thumbs
-			- 3.times do
-				%li
-					%img{src: "http://placekitten.com/160/120"}
+			%li
+				%img#post-thumb0{src: nil}
+			%li
+				%img#post-thumb1{src: nil}
+			%li
+				%img#post-thumb2{src: nil}
 		%button#next-post NEXT
 
 :javascript

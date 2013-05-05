@@ -1,3 +1,7 @@
 console.log("loading post image <%= @image.full_url %>");
 $("#post").attr("src","<%= @image.full_url %>");
 gPostImageId = <%= @image.id %>;
+
+$("#post-thumb0").attr("src","<%= @thumbs[0] %>");
+$("#post-thumb1").attr("src","<%= @thumbs[1] %>");
+$("#post-thumb2").attr("src","<%= @thumbs[2] %>");

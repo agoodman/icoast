@@ -1,3 +1,7 @@
 console.log("loading pre image <%= @image.full_url %>");
 $("#pre").attr("src","<%= @image.full_url %>");
 gPreImageId = <%= @image.id %>;
+
+$("#pre-thumb0").attr("src","<%= @thumbs[0] %>");
+$("#pre-thumb1").attr("src","<%= @thumbs[1] %>");
+$("#pre-thumb2").attr("src","<%= @thumbs[2] %>");
