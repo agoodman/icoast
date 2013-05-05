@@ -1,0 +1,7 @@
+<% if @image -%>
+console.log("loading pre image <%= @image.full_url %>");
+$("#pre").attr("src","<%= @image.full_url %>");
+gPreImageId = <%= @image.id %>;
+<% else -%>
+alert("None found");
+<% end -%>

@@ -1,0 +1,7 @@
+<% if @image -%>
+console.log("loading post image <%= @image.full_url %>");
+$("#post").attr("src","<%= @image.full_url %>");
+gPostImageId = <%= @image.id %>;
+<% else -%>
+alert("None found");
+<% end -%>

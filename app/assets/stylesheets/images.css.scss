@@ -1,0 +1,31 @@
+section {
+	width: 100%;
+	
+	.pre, .actions, .post { float: left; }
+	.actions button { display: block; }
+	.pre, .post { 
+		width: 45%; 
+		button, ul {
+			float: left;
+		}
+		li { 
+			float: left; 
+			margin: 2px;
+			width: 30%;
+			img { width: 100%;}
+		}
+	}
+	.actions { width: 10%; }
+	img {
+		width: 100%;
+	}
+	
+	&:after {
+		content: '.';
+		visibility: hidden;
+		clear: both;
+		display: block;
+	}
+}
+
+button { padding: 5px; }
