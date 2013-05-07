@@ -5,7 +5,7 @@
 %section
 	.pre
 		%h1 PRE
-		%img#pre{src: @pre_images.first.full_url}
+		%img#pre{src: @pre_images.where(position: @pre_position).first.full_url}
 		%button#prev-pre PREV
 		%ul.thumbs#pre-thumbs
 			%li
@@ -20,7 +20,7 @@
 		%button#find-post Find Post >
 	.post
 		%h1 POST
-		%img#post{src: @post_images.first.full_url}
+		%img#post{src: @post_images.where(position: @post_position).first.full_url}
 		%button#prev-post PREV
 		%ul.thumbs#post-thumbs
 			%li
@@ -32,5 +32,7 @@
 		%button#next-post NEXT
 
 :javascript
-	var gPreImageId = #{ @pre_images.first.id };
-	var gPostImageId = #{ @post_images.first.id };
+	var gPrePosition = #{ @pre_position };
+	var gPostPosition = #{ @post_position };
+	showPre(gPrePosition);
+	showPost(gPostPosition);

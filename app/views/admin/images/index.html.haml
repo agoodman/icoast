@@ -1,0 +1,28 @@
+#map.admin
+%nav
+	%ul
+		%li
+			%button Upload CSV
+		%li
+			Sort By: 
+			%button A-Z
+			%button Z-A
+			%button Newest
+			%button Oldest
+%section.data
+	%table
+		%tr
+			%th LAT
+			%th LNG
+			%th TAKEN
+			%th FILENAME
+			%th IMAGES
+		- for image in @images
+			%tr
+				%td= image.latitude
+				%td= image.longitude
+				%td= image.taken_at
+				%td= image.filename
+				%td
+					= link_to 'full', image.full_url, target: 'gallery'
+					= link_to 'thumb', image.thumb_url, target: 'gallery'

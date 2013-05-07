@@ -1,6 +1,6 @@
 console.log("loading pre image <%= @image.full_url %>");
 $("#pre").attr("src","<%= @image.full_url %>");
-gPreImageId = <%= @image.id %>;
+gPrePosition = <%= @image.position %>;
 
 $("#pre-thumb0").attr("src","<%= @thumbs[0] %>");
 $("#pre-thumb1").attr("src","<%= @thumbs[1] %>");

@@ -2,10 +2,11 @@ class Image < ActiveRecord::Base
   
   DELTA = 0.001
   
-  attr_accessible :filename, :full_url, :geo_area, :latitude, :longitude, :pre, :storm, :taken_at, :thumb_url
+  attr_accessible :filename, :full_url, :geo_area, :latitude, :longitude, :pre, :storm, :taken_at, :thumb_url, :position
   
+  scope :positioned, order('position')
   scope :pre, where(pre: true)
   scope :post, where(pre: false)
-  scope :nearby, lambda {|lat,lng| where('latitude > ?',lat-DELTA).where('latitude <= ?',lat+DELTA).where('longitude > ?',lng-DELTA).where('longitude <= ?',lng+DELTA) }
-  
+  scope :nearby, lambda {|lat,lng,rng=DELTA| where('latitude > ?',lat-rng).where('latitude <= ?',lat+rng).where('longitude > ?',lng-rng).where('longitude <= ?',lng+rng)}
+
 end
