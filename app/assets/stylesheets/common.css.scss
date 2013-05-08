@@ -1,7 +1,7 @@
 * { padding: 0; margin: 0; font-family: Helvetica Neue; }
 body { height: 100%; }
 ul { list-style: none; }
-h1 { font-size: 18pt; text-align: center; }
+h1 { font-size: 1.25em; text-align: center; }
 table { 
 	th, td { padding-left: 10px; text-align: left; }
 }
@@ -31,3 +31,12 @@ section.data {
 	height: 400px;
 	overflow: auto;
 }
+img.loading {
+	opacity: 0.25;
+}
+
+@media (screen) and (max-width: 320px) { body { font-size: 9pt; } }
+@media (screen) and (max-width: 480px) and (min-width: 321px) { body { font-size: 10pt; } }
+@media (screen) and (max-width: 768px) and (min-width: 481px)  { body { font-size: 11pt; } }
+@media (screen) and (max-width: 960px) and (min-width: 769px)  { body { font-size: 12pt; } }
+@media (screen) and (max-width: 1200px) and (min-width: 961px)  { body { font-size: 14pt; } }

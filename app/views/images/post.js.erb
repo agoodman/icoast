@@ -1,5 +1,6 @@
 console.log("loading post image <%= @image.full_url %>");
 $("#post").attr("src","<%= @image.full_url %>");
+
 gPostPosition = <%= @image.position %>;
 
 $("#post-thumb0").attr("src","<%= @thumbs[0] %>");

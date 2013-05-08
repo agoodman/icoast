@@ -5,31 +5,34 @@
 %section
 	.pre
 		%h1 PRE
+		%button#find-post Find Post >
 		%img#pre{src: @pre_images.where(position: @pre_position).first.full_url}
-		%button#prev-pre PREV
 		%ul.thumbs#pre-thumbs
 			%li
+				%button#prev-pre <
+			%li.thumb
 				%img#pre-thumb0{src: nil}
-			%li
+			%li.thumb.active
 				%img#pre-thumb1{src: nil}
-			%li
+			%li.thumb
 				%img#pre-thumb2{src: nil}
-		%button#next-pre NEXT
-	.actions
-		%button#find-pre < Find Pre
-		%button#find-post Find Post >
+			%li
+				%button#next-pre >
 	.post
 		%h1 POST
+		%button#find-pre < Find Pre
 		%img#post{src: @post_images.where(position: @post_position).first.full_url}
-		%button#prev-post PREV
 		%ul.thumbs#post-thumbs
 			%li
+				%button#prev-post <
+			%li.thumb
 				%img#post-thumb0{src: nil}
-			%li
+			%li.thumb.active
 				%img#post-thumb1{src: nil}
-			%li
+			%li.thumb
 				%img#post-thumb2{src: nil}
-		%button#next-post NEXT
+			%li
+				%button#next-post >
 
 :javascript
 	var gPrePosition = #{ @pre_position };
