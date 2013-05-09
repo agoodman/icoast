@@ -1,5 +1,3 @@
-%nav
-	%button#show-map Map
 %section
 	.pre
 		%h1 PRE
@@ -31,6 +29,55 @@
 				%img#post-thumb2{src: nil}
 			%li
 				%button#next-post >
+
+%section
+	%p
+		%label Step 1:
+		Pick a location on the map to view the pre- and post-storm photos in that area
+		%button#show-map Map
+	%p
+		%label Step 2:
+		Find a matching pre- and post-storm photo and check the box if you found a good photo pair
+		%input{type: 'checkbox'} Match
+	%p
+		%label Step 3:
+		Mark all the coastal hazard regimes and visual coastal changes you see in the post-storm photo.
+	%ul.regimes
+		%li
+			%input{type: 'checkbox'} Swash Regime
+		%li
+			%input{type: 'checkbox'} Collision Regime
+		%li
+			%input{type: 'checkbox'} Overwash Regime
+		%li
+			%input{type: 'checkbox'} Inundation Regime
+	%ul.changes
+		%li
+			%input{type: 'checkbox'} No Change
+		%li
+			%input{type: 'checkbox'} Beach / Dune Scarps
+		%li
+			%input{type: 'checkbox'} Sand on Road / Parking Lot
+		%li
+			%input{type: 'checkbox'} Damaged Walkway
+		%li
+			%input{type: 'checkbox'} Damaged Roofs
+		%li
+			%input{type: 'checkbox'} Dark Sediment
+		%li
+			%input{type: 'checkbox'} Tractors Moving Sand
+		%li
+			%input{type: 'checkbox'} Damaged Sand / Snow Fence
+		%li
+			%input{type: 'checkbox'} Damaged Houses
+		%li
+			%input{type: 'checkbox'} Fans of Sand
+		%li
+			%input{type: 'checkbox'} House Construction
+		%li
+			%input{type: 'checkbox'} Damaged Road
+		%li
+			%input{type: 'checkbox'} Breach
 
 #map
 
