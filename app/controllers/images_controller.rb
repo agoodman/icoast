@@ -10,6 +10,16 @@ class ImagesController < ApplicationController
     @storms = Image.all.map(&:storm).uniq
   end
   
+  def index_pre
+    @images = Image.pre.order('position')
+    respond_with(@images, only: params[:only].split(',').map(&:to_sym))
+  end
+  
+  def index_post
+    @images = Image.post.order('position')
+    respond_with(@images, only: params[:only].split(',').map(&:to_sym))
+  end
+  
   def pre
     @image = Image.pre.where(position: params[:position]).first
     load_thumbs

@@ -1,6 +1,8 @@
 Usgs::Application.routes.draw do
 
-  resources :images
+  get '/images' => 'images#index'
+  get '/images/pre' => 'images#index_pre'
+  get '/images/post' => 'images#index_post'
   get '/images/pre/:position' => 'images#pre'
   get '/images/post/:position' => 'images#post'
   get '/images/nearest_pre/:position' => 'images#nearest_pre'

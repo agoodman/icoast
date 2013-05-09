@@ -1,7 +1,5 @@
 %nav
-	%select
-		- for opt in @storms
-			%option{value: opt}= opt
+	%button#show-map Map
 %section
 	.pre
 		%h1 PRE
@@ -33,6 +31,8 @@
 				%img#post-thumb2{src: nil}
 			%li
 				%button#next-post >
+
+#map
 
 :javascript
 	var gPrePosition = #{ @pre_position };
