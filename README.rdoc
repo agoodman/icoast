@@ -19,14 +19,14 @@ By visually comparing images of the same location on the coastline pre- and post
 
 === Route Map
 
-GET /images
-GET /images/<pre|post>.json
-GET /images/<pre|post>/1.js
-GET /images/nearest_<pre|post>/1.js
-POST /admin/images
-GET /admin/images
-PUT /admin/images/1.js
-DELETE /admin/images/1.js
+* GET /images
+* GET /images/<pre|post>.json
+* GET /images/<pre|post>/1.js
+* GET /images/nearest_<pre|post>/1.js
+* POST /admin/images
+* GET /admin/images
+* PUT /admin/images/1.js
+* DELETE /admin/images/1.js
 
 === Interaction Design
 
