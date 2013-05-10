@@ -6,7 +6,7 @@ class Tag < ActiveRecord::Base
   scope :regime, where(regime: true)
   scope :visual, where(regime: false)
   
-  before_save :init_regime
+  before_validation :init_regime
   
   def init_regime
     self.regime = false if regime.blank?
