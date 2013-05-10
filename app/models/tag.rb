@@ -4,7 +4,7 @@ class Tag < ActiveRecord::Base
   attr_accessible :name, :regime
   
   scope :regime, where(regime: true)
-  scope :visual, where('regime != ?',true)
+  scope :visual, where(regime: false)
   
   before_save :init_regime
   
