@@ -11,21 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130507024532) do
+ActiveRecord::Schema.define(:version => 20130510020731) do
 
   create_table "images", :force => true do |t|
-    t.string   "filename"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.datetime "taken_at"
-    t.string   "full_url"
-    t.string   "thumb_url"
-    t.boolean  "pre"
-    t.string   "storm"
-    t.string   "geo_area"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "position"
+    t.string    "filename"
+    t.float     "latitude"
+    t.float     "longitude"
+    t.timestamp "taken_at"
+    t.string    "full_url"
+    t.string    "thumb_url"
+    t.boolean   "pre"
+    t.string    "storm"
+    t.string    "geo_area"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
+    t.integer   "position"
   end
+
+  add_index "images", ["position"], :name => "index_images_on_position"
 
 end
