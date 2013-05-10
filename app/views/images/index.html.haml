@@ -43,15 +43,13 @@
 		%label Step 3:
 		Mark all the coastal hazard regimes and visual coastal changes you see in the post-storm photo.
 	%ul.regimes
-		%li
-			%input{type: 'checkbox'} Swash Regime
-		%li
-			%input{type: 'checkbox'} Collision Regime
-		%li
-			%input{type: 'checkbox'} Overwash Regime
-		%li
-			%input{type: 'checkbox'} Inundation Regime
+		- for tag in @tags.regime
+			%li
+				%input{type: 'checkbox', id: dom_id(tag), tag_id: tag.id} #{tag.name} Regime
 	%ul.changes
+		- for tag in @tags.visual
+			%li
+				%input{type: 'checkbox', id: dom_id(tag), tag_id: tag.id}= tag.name
 		%li
 			%input{type: 'checkbox'} No Change
 		%li
@@ -84,5 +82,6 @@
 :javascript
 	var gPrePosition = #{ @pre_position };
 	var gPostPosition = #{ @post_position };
+	var gPostId = 0;
 	showPre(gPrePosition);
 	showPost(gPostPosition);

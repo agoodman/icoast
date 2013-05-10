@@ -50,14 +50,14 @@ function initializeMap() {
 	var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
 	// load placemarks for images
-	setTimeout(function() {loadMarkers(map, true, 1, 1000);},0);
-	setTimeout(function() {loadMarkers(map, false, 1, 1000);},0);
+	loadMarkers(map, true, 1, 1000);
+	loadMarkers(map, false, 1, 1000);
 }
 
 function loadMarkers(map,pre,page,perPage) {
 	$.getJSON('/images/'+(pre?'pre':'post')+'.json?page='+page+'&per_page='+perPage+'&only=latitude,longitude,position', function(data) {
 		if( data.length!=0 ) {
-			setTimeout(function() {loadMarkers(map,pre,page+1,perPage);}, 0);
+			loadMarkers(map,pre,page+1,perPage);
 		}
 		$.each(data, function(key,val) {
 			var marker = new google.maps.Marker({

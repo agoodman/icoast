@@ -3,6 +3,7 @@ class ImagesController < ApplicationController
   respond_to :html, :js, :json
   
   def index
+    @tags = Tag.scoped
     # here, there be hacks
     @pre_position = 378
     @post_position = 2402
@@ -25,7 +26,7 @@ class ImagesController < ApplicationController
   end
   
   def post
-    @image = Image.post.where(position: params[:position]).first
+    @image = Image.post.includes(annotations: :tag).where(position: params[:position]).first
     load_thumbs
     respond_with(@image)
   end

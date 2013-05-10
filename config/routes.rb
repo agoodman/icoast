@@ -8,8 +8,11 @@ Usgs::Application.routes.draw do
   get '/images/nearest_pre/:position' => 'images#nearest_pre'
   get '/images/nearest_post/:position' => 'images#nearest_post'
   
+  resources :annotations
+  
   namespace :admin do
     resources :images
+    resources :tags
   end
   
   root to: 'images#index'

@@ -1,0 +1,6 @@
+%ul
+	- for tag in @tags
+		%li
+			= tag.name
+			= link_to 'remove', admin_tag_path(tag), method: :delete, confirm: "Are you sure?"
+	%li= link_to 'add tag', new_admin_tag_path

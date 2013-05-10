@@ -2,6 +2,9 @@ class Image < ActiveRecord::Base
   
   DELTA = 0.001
   
+  has_many :annotations
+  has_many :tags, through: :annotations
+  
   attr_accessible :filename, :full_url, :geo_area, :latitude, :longitude, :pre, :storm, :taken_at, :thumb_url, :position
   
   scope :positioned, order('position')

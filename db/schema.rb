@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130510020731) do
+ActiveRecord::Schema.define(:version => 20130510041832) do
+
+  create_table "annotations", :force => true do |t|
+    t.integer  "image_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "images", :force => true do |t|
     t.string    "filename"
@@ -29,5 +36,12 @@ ActiveRecord::Schema.define(:version => 20130510020731) do
   end
 
   add_index "images", ["position"], :name => "index_images_on_position"
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.boolean  "regime"
+  end
 
 end
