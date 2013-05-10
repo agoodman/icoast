@@ -1,4 +1,4 @@
-class TagsController < ApplicationController
+class Admin::TagsController < ApplicationController
 
   respond_to :html, :js
 
