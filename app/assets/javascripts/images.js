@@ -1,8 +1,8 @@
 $(function() {
-	$("#prev-pre").click(function() { showPre(gPrePosition-1); });
-	$("#next-pre").click(function() { showPre(gPrePosition+1); });
-	$("#prev-post").click(function() { showPost(gPostPosition-1) });
-	$("#next-post").click(function() { showPost(gPostPosition+1) });
+	$("#prev-pre, #pre-thumb0").click(function() { showPre(gPrePosition-1); });
+	$("#next-pre, #pre-thumb2").click(function() { showPre(gPrePosition+1); });
+	$("#prev-post, #post-thumb0").click(function() { showPost(gPostPosition-1) });
+	$("#next-post, #post-thumb2").click(function() { showPost(gPostPosition+1) });
 	$("#find-pre").click(function() { findNearestPre(gPostPosition+1) });
 	$("#find-post").click(function() { findNearestPost(gPrePosition+1) });
 	$("#show-map").click(function() { showMap(); });
@@ -41,7 +41,7 @@ function loadingPost() {
 
 function initializeMap() {
 	var mapOptions = {
-		center: new google.maps.LatLng(34.397, -76.464),
+		center: new google.maps.LatLng(38.84435486162807, -74.03361157242779),
 		zoom: 7,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};

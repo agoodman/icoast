@@ -3,11 +3,9 @@ class ImagesController < ApplicationController
   respond_to :html, :js, :json
   
   def index
-    @pre_images = Image.pre.order('position')
-    @post_images = Image.post.order('position')
+    # here, there be hacks
     @pre_position = 378
     @post_position = 2402
-    @storms = Image.all.map(&:storm).uniq
   end
   
   def index_pre
