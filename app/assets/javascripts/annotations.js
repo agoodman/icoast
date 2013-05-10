@@ -1,5 +1,5 @@
 $(function() {
-	$(".changes input[type='checkbox']").change(function() {
+	$(".regimes input[type='checkbox'], .changes input[type='checkbox']").change(function() {
 		var checked = $(this).prop("checked");
 		var tagId = $(this).attr("tag_id");
 		
