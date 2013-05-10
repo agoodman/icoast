@@ -9,12 +9,12 @@ class ImagesController < ApplicationController
   end
   
   def index_pre
-    @images = Image.pre.order('position')
+    @images = Image.pre.order('position').paginate(page: params[:page], per_page: params[:per_page])
     respond_with(@images, only: params[:only].split(',').map(&:to_sym))
   end
   
   def index_post
-    @images = Image.post.order('position')
+    @images = Image.post.order('position').paginate(page: params[:page], per_page: params[:per_page])
     respond_with(@images, only: params[:only].split(',').map(&:to_sym))
   end
   

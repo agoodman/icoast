@@ -1,3 +1,5 @@
+var markers = [];
+
 $(function() {
 	$("#prev-pre, #pre-thumb0").click(function() { showPre(gPrePosition-1); });
 	$("#next-pre, #pre-thumb2").click(function() { showPre(gPrePosition+1); });
@@ -42,40 +44,43 @@ function loadingPost() {
 function initializeMap() {
 	var mapOptions = {
 		center: new google.maps.LatLng(38.84435486162807, -74.03361157242779),
-		zoom: 7,
+		zoom: 8,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
 	// load placemarks for images
-	var markers = [];
-	$.getJSON('/images/pre.json?only=latitude,longitude,position', function(data) {
+	setTimeout(function() {loadMarkers(map, true, 1, 1000);},0);
+	setTimeout(function() {loadMarkers(map, false, 1, 1000);},0);
+}
+
+function loadMarkers(map,pre,page,perPage) {
+	$.getJSON('/images/'+(pre?'pre':'post')+'.json?page='+page+'&per_page='+perPage+'&only=latitude,longitude,position', function(data) {
+		if( data.length!=0 ) {
+			setTimeout(function() {loadMarkers(map,pre,page+1,perPage);}, 0);
+		}
 		$.each(data, function(key,val) {
 			var marker = new google.maps.Marker({
 				position: new google.maps.LatLng(val.latitude,val.longitude), 
-				map: map
+				map: map,
+				icon: (pre?'/assets/red-dot.png':'/assets/blue-dot.png')
 			});
-			google.maps.event.addListener(marker, 'click', function() {
-				hideMap();
-				showPre(val.position);
-				findNearestPost(val.position);
-			});
+			if( pre ) {
+				google.maps.event.addListener(marker, 'click', function() {
+					hideMap();
+					showPre(val.position);
+					findNearestPost(val.position);
+				});
+			}else{
+				google.maps.event.addListener(marker, 'click', function() {
+					hideMap();
+					showPost(val.position);
+					findNearestPre(val.position);
+				});
+			}
 			markers.push(marker);
-		})
-	});
-	$.getJSON('/images/post.json?only=latitude,longitude,position', function(data) {
-		$.each(data, function(key,val) {
-			var marker = new google.maps.Marker({
-				position: new google.maps.LatLng(val.latitude,val.longitude), 
-				map: map
-			});
-			google.maps.event.addListener(marker, 'click', function() {
-				hideMap();
-				showPost(val.position);
-				findNearestPre(val.position);
-			});
-			markers.push(marker);
-		})
+		});
+		console.log("loaded "+data.length+" "+(pre?'pre':'post')+" images");
 	});
 }
 
