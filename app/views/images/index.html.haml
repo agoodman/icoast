@@ -13,47 +13,38 @@
 				%img#pre-thumb2{src: nil}
 			%li
 				%button#next-pre >
+		%p
+			%label Step 1:
+			Select a random location or pick a location on the map to view the post-storm photo in that area
+		%p
+			%label Step 2:
+			Find a matching pre-storm photo and check the box if you found a good photo pair
+		%p
+			%label Step 3:
+			Mark all the coastal hazard regimes and visual coastal changes you see in the post-storm photo.
+		
 	.post
 		%h1 POST
 		%img#post{src: nil}
-		%ul.thumbs#post-thumbs
+		.actions
+			%button#shuffle-post Shuffle
+			%button#show-map Map
+		%ul.match
 			%li
-				%button#prev-post <
-			%li.thumb
-				%img#post-thumb0{src: nil}
-			%li.thumb.active
-				%img#post-thumb1{src: nil}
-			%li.thumb
-				%img#post-thumb2{src: nil}
-			%li
-				%button#next-post >
+				%input{type: 'checkbox'} Match
+		%ul.regimes
+			- for tag in @tags.regime
+				%li
+					%input{type: 'checkbox', id: dom_id(tag), tag_id: tag.id} #{tag.name} Regime
+		%ul.changes
+			- for tag in @tags.visual
+				%li
+					%input{type: 'checkbox', id: dom_id(tag), tag_id: tag.id}= tag.name
 
-%section
-	%p
-		%label Step 1:
-		Pick a location on the map to view the pre- and post-storm photos in that area
-		%button#show-map Map
-	%p
-		%label Step 2:
-		Find a matching pre- and post-storm photo and check the box if you found a good photo pair
-		%input{type: 'checkbox'} Match
-	%p
-		%label Step 3:
-		Mark all the coastal hazard regimes and visual coastal changes you see in the post-storm photo.
-	%ul.regimes
-		- for tag in @tags.regime
-			%li
-				%input{type: 'checkbox', id: dom_id(tag), tag_id: tag.id} #{tag.name} Regime
-	%ul.changes
-		- for tag in @tags.visual
-			%li
-				%input{type: 'checkbox', id: dom_id(tag), tag_id: tag.id}= tag.name
-
-#map
+#map{style: 'display:none'}
 
 :javascript
 	var gPrePosition = #{ @pre_position };
 	var gPostPosition = #{ @post_position };
 	var gPostId = 0;
-	showPre(gPrePosition);
-	showPost(gPostPosition);
+	findRandomPost();

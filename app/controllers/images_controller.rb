@@ -6,7 +6,7 @@ class ImagesController < ApplicationController
     @tags = Tag.scoped
     # here, there be hacks
     @pre_position = 378
-    @post_position = 2402
+    @post_position = Image.random_post(Image.post.count).first.position
   end
   
   def index_pre
@@ -46,6 +46,11 @@ class ImagesController < ApplicationController
     pre_image = Image.pre.where(position: params[:position]).first
     @image = Image.post.nearby(pre_image.latitude, pre_image.longitude).first
     load_thumbs
+    respond_with(@image)
+  end
+  
+  def random_post
+    @image = Image.random_post(Image.post.count).first
     respond_with(@image)
   end
   

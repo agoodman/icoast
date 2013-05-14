@@ -8,6 +8,7 @@ $(function() {
 	$("#find-pre").click(function() { findNearestPre(gPostPosition+1) });
 	$("#find-post").click(function() { findNearestPost(gPrePosition+1) });
 	$("#show-map").click(function() { showMap(); });
+	$("#shuffle-post").click(function() { findRandomPost(); });
 	
 	$("#pre, #pre-thumb0, #pre-thumb1, #pre-thumb2, #post, #post-thumb0, #post-thumb1, #post-thumb2").load(function() { $(this).removeClass('loading'); });
 	initializeMap();
@@ -31,6 +32,11 @@ function findNearestPre(imageId) {
 function findNearestPost(imageId) {
 	loadingPost();
 	$.getScript("/images/nearest_post/"+imageId+".js");
+}
+
+function findRandomPost() {
+	loadingPost();
+	$.getScript("/images/post/random.js");
 }
 
 function loadingPre() {
@@ -65,13 +71,7 @@ function loadMarkers(map,pre,page,perPage) {
 				map: map,
 				icon: (pre?'/assets/red-dot.png':'/assets/blue-dot.png')
 			});
-			if( pre ) {
-				google.maps.event.addListener(marker, 'click', function() {
-					hideMap();
-					showPre(val.position);
-					findNearestPost(val.position);
-				});
-			}else{
+			if( !pre ) {
 				google.maps.event.addListener(marker, 'click', function() {
 					hideMap();
 					showPost(val.position);

@@ -52,6 +52,15 @@ section {
 			top: 0;
 			left: 5px;
 		}
+		.actions {
+			width: 50%;
+			&:after {
+				content: '.';
+				visibility: hidden;
+				clear: both;
+				display: block;	
+			}
+		}
 	}
 	.actions { width: 10%; }
 	img {
@@ -64,15 +73,21 @@ section {
 		label { font-weight: bold; }
 		button, input[type='checkbox'] { margin-left: 20px; }
 	}
-	ul.regimes, ul.changes { 
+	ul.match, ul.regimes, ul.changes { 
 		margin-top: 10px;
 		margin-left: 10px;
 		clear: both;
 		li { 
-			min-width: 20%;
+			min-width: 50%;
 			float: left; 
 			input[type='checkbox'] { margin-right: 5px; }
 		}
+	}
+	#shuffle-post {
+		width: 30%;
+	}
+	#show-map {
+		width: 20%;
 	}
 	
 	&:after {

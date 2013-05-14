@@ -11,6 +11,7 @@ class Image < ActiveRecord::Base
   scope :pre, where(pre: true)
   scope :post, where(pre: false)
   scope :nearby, lambda {|lat,lng,rng=DELTA| where('latitude > ?',lat-rng).where('latitude <= ?',lat+rng).where('longitude > ?',lng-rng).where('longitude <= ?',lng+rng)}
+  scope :random_post, lambda {|max| post.where(position: rand(max)).limit(1) }
 
   def self.update_positions(strategy)
     strategy.pre.each_with_index {|e,k| e.update_attributes(position: k)}
