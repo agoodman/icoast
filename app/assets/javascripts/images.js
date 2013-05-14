@@ -1,4 +1,5 @@
 var markers = [];
+var mapInitialized = false;
 
 $(function() {
 	$("#prev-pre, #pre-thumb0").click(function() { showPre(gPrePosition-1); });
@@ -11,7 +12,6 @@ $(function() {
 	$("#shuffle-post").click(function() { findRandomPost(); });
 	
 	$("#pre, #pre-thumb0, #pre-thumb1, #pre-thumb2, #post, #post-thumb0, #post-thumb1, #post-thumb2").load(function() { $(this).removeClass('loading'); });
-	initializeMap();
 });
 
 function showPre(imageId) {
@@ -58,6 +58,8 @@ function initializeMap() {
 	// load placemarks for images
 	loadMarkers(map, true, 1, 1000);
 	loadMarkers(map, false, 1, 1000);
+	
+	mapInitialized = true;
 }
 
 function loadMarkers(map,pre,page,perPage) {
@@ -86,6 +88,9 @@ function loadMarkers(map,pre,page,perPage) {
 
 function showMap() {
 	$('#map').show();
+	if( !mapInitialized ) {
+		initializeMap();
+	}
 }
 
 function hideMap() {
