@@ -33,8 +33,8 @@ class ImagesController < ApplicationController
   
   def nearest_pre
     post_image = Image.post.where(position: params[:position]).first
-    delta = 0.005
-    for k in 1..3
+    delta = 0.001
+    for k in 1..15
       @image = Image.pre.nearby(post_image.latitude, post_image.longitude, delta*k).first rescue nil
       break unless @image.nil?
     end
