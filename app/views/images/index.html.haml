@@ -36,7 +36,7 @@
 		%h3 Photo Match
 		%ul.match
 			%li
-				%input{type: 'checkbox'} Pre-Storm Photo Matches Post-Storm Photo
+				%input{type: 'checkbox', id: 'match'} Pre-Storm Photo Matches Post-Storm Photo
 		%h3 Coastal Change Regimes
 		%ul.regimes
 			- for tag in @tags.regime
@@ -54,4 +54,5 @@
 	var gPrePosition = #{ @pre_position };
 	var gPostPosition = #{ @post_position };
 	var gPostId = 0;
+	var gPreId = 0;
 	findRandomPost();

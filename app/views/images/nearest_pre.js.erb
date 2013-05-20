@@ -8,6 +8,8 @@ $("#pre-thumb2").attr("src","<%= @thumbs[2] %>");
 
 $(".pre h1").html("PRE-STORM at (<%= @image.latitude %>, <%= @image.longitude %>)");
 gPrePosition = <%= @image.position %>;
+gPreId = <%= @image.id %>;
+
 <% else -%>
 alert("No matching pre image");
 <% end -%>

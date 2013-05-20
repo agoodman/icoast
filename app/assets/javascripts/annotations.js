@@ -1,9 +1,14 @@
 $(function() {
 	$(".regimes input[type='checkbox'], .changes input[type='checkbox']").change(function() {
 		var checked = $(this).prop("checked");
-		var tagId = $(this).attr("tag_id");
 		
-		addTag(gPostId,tagId);
+		if( checked ) {
+			var annotationId = $(this).attr("annotation_id");
+			removeTag(annotationId);
+		}else{
+			var tagId = $(this).attr("tag_id");
+			addTag(gPostId,tagId);
+		}
 	});
 });
 

@@ -6,4 +6,6 @@ class Match < ActiveRecord::Base
   
   attr_accessible :post_image_id, :pre_image_id, :user_id
   
+  scope :for_user, lambda {|user| where(user_id: user.id)}
+
 end

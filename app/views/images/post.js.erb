@@ -10,6 +10,8 @@ $("#post-thumb2").attr("src","<%= @thumbs[2] %>");
 
 $(".post h1").html("POST-STORM at (<%= @image.latitude %>, <%= @image.longitude %>)");
 
+$("#match").prop("checked",<% if @image.matches.for_user(current_user).any? %>true<% else %>false<% end %>);
+
 $(".regimes input[type='checkbox']").prop("checked",false);
 $(".changes input[type='checkbox']").prop("checked",false);
 <% if (my_tags=@image.tags_for_user(current_user)).any? -%>
