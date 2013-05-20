@@ -6,13 +6,14 @@ class Image < ActiveRecord::Base
   has_many :tags, through: :annotations
   has_many :matches, foreign_key: 'post_image_id'
   
-  attr_accessible :filename, :full_url, :geo_area, :latitude, :longitude, :pre, :storm, :taken_at, :thumb_url, :position
+  attr_accessible :filename, :full_url, :geo_area, :latitude, :longitude, :pre, :storm, :taken_at, :thumb_url, :position, :enabled
   
   scope :positioned, order('position')
   scope :pre, where(pre: true)
   scope :post, where(pre: false)
   scope :nearby, lambda {|lat,lng,rng=DELTA| where('latitude > ?',lat-rng).where('latitude <= ?',lat+rng).where('longitude > ?',lng-rng).where('longitude <= ?',lng+rng)}
   scope :random_post, lambda {|max| post.where(position: rand(max)).limit(1) }
+  scope :enabled, where(enabled: true)
 
   def self.update_positions(strategy)
     strategy.pre.each_with_index {|e,k| e.update_attributes(position: k)}

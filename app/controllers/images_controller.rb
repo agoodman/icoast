@@ -6,7 +6,7 @@ class ImagesController < ApplicationController
     @tags = Tag.scoped
     # here, there be hacks
     @pre_position = 378
-    @post_position = Image.random_post(Image.post.count).first.position
+    @post_position = Image.enabled.random_post(Image.post.enabled.count).first.position
   end
   
   def index_pre
@@ -15,7 +15,7 @@ class ImagesController < ApplicationController
   end
   
   def index_post
-    @images = Image.post.order('position').paginate(page: params[:page], per_page: params[:per_page])
+    @images = Image.post.enabled.order('position').paginate(page: params[:page], per_page: params[:per_page])
     respond_with(@images, only: params[:only].split(',').map(&:to_sym))
   end
   
@@ -26,13 +26,13 @@ class ImagesController < ApplicationController
   end
   
   def post
-    @image = Image.post.includes(annotations: :tag).where(position: params[:position]).first
+    @image = Image.post.enabled.includes(annotations: :tag).where(position: params[:position]).first
     load_thumbs
     respond_with(@image)
   end
   
   def nearest_pre
-    post_image = Image.post.where(position: params[:position]).first
+    post_image = Image.post.enabled.where(position: params[:position]).first
     delta = 0.001
     for k in 1..15
       @image = Image.pre.nearby(post_image.latitude, post_image.longitude, delta*k).first rescue nil
@@ -50,7 +50,7 @@ class ImagesController < ApplicationController
   end
   
   def random_post
-    @image = Image.random_post(Image.post.count).first
+    @image = Image.enabled.random_post(Image.post.enabled.count).first
     respond_with(@image)
   end
   

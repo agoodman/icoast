@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130520162811) do
+ActiveRecord::Schema.define(:version => 20130520181336) do
 
   create_table "annotations", :force => true do |t|
     t.integer   "image_id"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20130520162811) do
     t.timestamp "created_at", :null => false
     t.timestamp "updated_at", :null => false
     t.integer   "position"
+    t.boolean   "enabled"
   end
 
   add_index "images", ["position"], :name => "index_images_on_position"
