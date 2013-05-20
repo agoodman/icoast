@@ -9,3 +9,7 @@ $("#pre-thumb1").attr("src","<%= @thumbs[1] %>");
 $("#pre-thumb2").attr("src","<%= @thumbs[2] %>");
 
 $(".pre h1").html("PRE-STORM at (<%= @image.latitude %>, <%= @image.longitude %>)");
+
+matchExists(gPreId,gPostId,function(exists) {
+	$("#match").prop("checked",exists);
+});

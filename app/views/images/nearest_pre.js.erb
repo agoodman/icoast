@@ -10,6 +10,9 @@ $(".pre h1").html("PRE-STORM at (<%= @image.latitude %>, <%= @image.longitude %>
 gPrePosition = <%= @image.position %>;
 gPreId = <%= @image.id %>;
 
+matchExists(gPreId,gPostId,function(exists) {
+	$("#match").prop("checked",exists);
+});
 <% else -%>
 alert("No matching pre image");
 <% end -%>

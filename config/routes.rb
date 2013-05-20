@@ -10,6 +10,7 @@ Usgs::Application.routes.draw do
   get '/images/post/:position' => 'images#post'
   get '/images/nearest_pre/:position' => 'images#nearest_pre'
   get '/images/nearest_post/:position' => 'images#nearest_post'
+  get '/matches/:pre/:post' => 'matches#exists'
   
   resources :annotations
   resources :analytics, only: :index

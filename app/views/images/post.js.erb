@@ -12,8 +12,4 @@ $(".post h1").html("POST-STORM at (<%= @image.latitude %>, <%= @image.longitude 
 
 $("#match").prop("checked",<% if @image.matches.for_user(current_user).any? %>true<% else %>false<% end %>);
 
-$(".regimes input[type='checkbox']").prop("checked",false);
-$(".changes input[type='checkbox']").prop("checked",false);
-<% if (my_tags=@image.tags_for_user(current_user)).any? -%>
-$('<%= my_tags.map {|e| "##{dom_id(e)}"}.join(", ") %>').prop("checked",true);
-<% end -%>
+<%= render partial: 'annotations', locals: { image: @image } %>

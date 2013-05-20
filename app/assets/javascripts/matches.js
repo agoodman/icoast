@@ -44,3 +44,16 @@ function removeMatch(matchId) {
 		}
 	});
 }
+
+function matchExists(preId,postId,callback) {
+	$.ajax({
+		type: "GET",
+		url: "/matches/"+preId+"/"+postId,
+		success: function(data, textStatus, jqxhr) {
+			callback(true);
+		},
+		error: function(jqxhr, textStatus, errorThrown) {
+			callback(false);
+		}
+	});
+}

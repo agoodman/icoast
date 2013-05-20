@@ -3,11 +3,11 @@ $(function() {
 		var checked = $(this).prop("checked");
 		
 		if( checked ) {
-			var annotationId = $(this).attr("annotation_id");
-			removeTag(annotationId);
-		}else{
 			var tagId = $(this).attr("tag_id");
 			addTag(gPostId,tagId);
+		}else{
+			var annotationId = $(this).attr("annotation_id");
+			removeTag(annotationId);
 		}
 	});
 });

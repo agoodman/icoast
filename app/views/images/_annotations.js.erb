@@ -1,0 +1,6 @@
+$(".regimes input[type='checkbox']").prop("checked",false);
+$(".changes input[type='checkbox']").prop("checked",false);
+<% if (my_annotations=image.annotations.for_user(current_user)).any? -%>
+$('<%= my_annotations.map {|e| "##{dom_id(e.tag)}"}.join(", ") %>').prop("checked",true);
+<% for annotation in my_annotations -%>$('#<%= dom_id(annotation.tag) %>').attr("annotation_id",<%= annotation.id %>);<% end -%>
+<% end -%>

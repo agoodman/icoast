@@ -1,14 +1,11 @@
 console.log("loading post image <%= @image.full_url %>");
 $("#post").attr("src","<%= @image.full_url %>");
 
+gPostPosition = <%= @image.position %>;
 gPostId = <%= @image.id %>;
 
 $(".post h1").html("POST-STORM at (<%= @image.latitude %>, <%= @image.longitude %>)");
 
-$(".regimes input[type='checkbox']").prop("checked",false);
-$(".changes input[type='checkbox']").prop("checked",false);
-<% if @image.tags.any? -%>
-$('<%= @image.tags.map {|e| "##{dom_id(e)}"}.join(", ") %>').prop("checked",true);
-<% end -%>
+<%= render partial: 'annotations', locals: { image: @image } %>
 
 findNearestPre(<%= @image.position %>);
