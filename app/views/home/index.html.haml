@@ -1,0 +1,9 @@
+%h2 iCoast
+- if user_signed_in?
+	%p You are signed in
+	%button#show-classify Continue classifying images
+- else
+	%p You must be signed in
+	%button#sign-in Sign In
+	%p Don't have an account?
+	%button#sign-up Sign Up

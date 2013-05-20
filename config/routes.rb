@@ -1,5 +1,7 @@
 Usgs::Application.routes.draw do
 
+  devise_for :users
+
   get '/images' => 'images#index'
   get '/images/pre' => 'images#index_pre'
   get '/images/post' => 'images#index_post'
@@ -16,6 +18,6 @@ Usgs::Application.routes.draw do
     resources :tags
   end
   
-  root to: 'images#index'
+  root to: 'home#index'
 
 end

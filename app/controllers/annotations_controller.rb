@@ -4,6 +4,7 @@ class AnnotationsController < ApplicationController
   
   def create
     @annotation = Annotation.new(params[:annotation])
+    @annotation.user = current_user
     @annotation.save
     head :ok
   end

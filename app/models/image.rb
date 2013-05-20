@@ -17,5 +17,9 @@ class Image < ActiveRecord::Base
     strategy.pre.each_with_index {|e,k| e.update_attributes(position: k)}
     strategy.post.each_with_index {|e,k| e.update_attributes(position: k)}
   end
+
+  def tags_for_user(user)
+    annotations.for_user(user).map(&:tag) rescue []
+  end
   
 end
