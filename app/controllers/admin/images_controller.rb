@@ -1,5 +1,7 @@
 class Admin::ImagesController < ApplicationController
   
+  layout 'admin'
+  
   respond_to :html, :js
   
   def index

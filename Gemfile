@@ -9,6 +9,7 @@ gem 'haml'
 gem 'will_paginate'
 gem 'newrelic_rpm'
 gem 'devise'
+gem 'faker'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

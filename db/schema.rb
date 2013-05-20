@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130520020158) do
+ActiveRecord::Schema.define(:version => 20130520162811) do
 
   create_table "annotations", :force => true do |t|
-    t.integer  "image_id"
-    t.integer  "tag_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "user_id"
+    t.integer   "image_id"
+    t.integer   "tag_id"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
+    t.integer   "user_id"
   end
 
   create_table "images", :force => true do |t|
@@ -38,11 +38,19 @@ ActiveRecord::Schema.define(:version => 20130520020158) do
 
   add_index "images", ["position"], :name => "index_images_on_position"
 
+  create_table "matches", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "post_image_id"
+    t.integer  "pre_image_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "tags", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.boolean  "regime"
+    t.string    "name"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
+    t.boolean   "regime"
   end
 
   create_table "users", :force => true do |t|

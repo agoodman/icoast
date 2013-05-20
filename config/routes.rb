@@ -12,6 +12,7 @@ Usgs::Application.routes.draw do
   get '/images/nearest_post/:position' => 'images#nearest_post'
   
   resources :annotations
+  resources :analytics, only: :index
   
   namespace :admin do
     resources :images

@@ -1,0 +1,15 @@
+%h1 Totals
+%p
+	%label Users
+	%span= User.count
+%p
+	%label Classifications
+	%span= Annotation.count
+%p
+	%label Photo Matches
+	%span= Match.count
+	
+- for tag in Tag.regime
+	%p
+		%label= tag.name
+		%span= tag.annotations.count
