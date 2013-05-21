@@ -71,7 +71,7 @@ function loadMarkers(map,pre,page,perPage) {
 			var marker = new google.maps.Marker({
 				position: new google.maps.LatLng(val.latitude,val.longitude), 
 				map: map,
-				icon: (pre?'/assets/red-dot.png':'/assets/blue-dot.png')
+				icon: (pre?'/assets/blue-dot.png':'/assets/red-dot.png')
 			});
 			if( !pre ) {
 				google.maps.event.addListener(marker, 'click', function() {
