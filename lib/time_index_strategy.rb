@@ -5,7 +5,7 @@ module TimeIndexStrategy
   end
   
   def self.post
-    Image.post.order("taken_at asc")
+    Image.post.enabled.order("taken_at asc")
   end
   
 end
