@@ -92,12 +92,12 @@ section {
 	ul.regimes {
 		li { min-width: 25%; }
 	}
-	#shuffle-post {
-		font-size: 21pt;
-	}
+	.actions button { font-size: 21pt; }
 	#show-map {
-		font-size: 21pt;
 		margin-left: 25px;
+	}
+	#save {
+		float: right;
 	}
 	
 	&:after {
