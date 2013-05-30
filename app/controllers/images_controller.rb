@@ -5,8 +5,10 @@ class ImagesController < ApplicationController
   def index
     @tags = Tag.scoped
     # here, there be hacks
-    @pre_position = 378
-    @post_position = Image.enabled.random_post(Image.post.enabled.count).first.position
+    @pre_position = 2949
+    @post_position = 80
+    # TODO: decide whether there should be a random image here or a static predefined image
+    # @post_position = Image.enabled.random_post(Image.post.enabled.count).first.position
   end
   
   def index_pre
