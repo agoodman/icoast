@@ -87,13 +87,13 @@ function loadMarkers(map,pre,page,perPage) {
 }
 
 function showMap() {
-	$('#map').show();
+	$('#map, #legend').show();
 	if( !mapInitialized ) {
 		initializeMap();
 	}
 }
 
 function hideMap() {
-	$('#map').hide();
+	$('#map, #legend').hide();
 }
 

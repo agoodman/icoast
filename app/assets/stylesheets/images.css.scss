@@ -119,3 +119,15 @@ button { padding: 5px; }
 	left: 0;
 	z-index: 10;
 }
+
+#legend {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	z-index: 11;
+	padding: 10px;
+	background: white;
+	border: 1px solid black;
+	color: black;
+	span { color: red; }
+}
