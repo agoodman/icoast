@@ -1,6 +1,7 @@
 <% if @image -%>
 console.log("loading post image <%= @image.full_url %>");
 $("#post").attr("src","<%= @image.full_url %>");
+$("#post").loupe();
 
 $("#post-thumb0").attr("src","<%= @thumbs[0] %>");
 $("#post-thumb1").attr("src","<%= @thumbs[1] %>");

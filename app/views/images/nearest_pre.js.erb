@@ -1,6 +1,7 @@
 <% if @image -%>
 console.log("loading pre image <%= @image.full_url %>");
 $("#pre").attr("src","<%= @image.full_url %>");
+$("#pre").loupe();
 
 $("#pre-thumb0").attr("src","<%= @thumbs[0] %>");
 $("#pre-thumb1").attr("src","<%= @thumbs[1] %>");
