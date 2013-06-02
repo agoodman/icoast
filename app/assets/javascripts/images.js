@@ -65,7 +65,7 @@ function initializeMap() {
 function loadMarkers(map,pre,page,perPage) {
 	$.getJSON('/images/'+(pre?'pre':'post')+'.json?page='+page+'&per_page='+perPage+'&only=latitude,longitude,position', function(data) {
 		if( data.length!=0 ) {
-			loadMarkers(map,pre,page+1,perPage);
+			loadMarkers(map,pre,page+1,perPage,admin);
 		}
 		$.each(data, function(key,val) {
 			var marker = new google.maps.Marker({

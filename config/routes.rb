@@ -17,8 +17,14 @@ Usgs::Application.routes.draw do
   resources :matches
   
   namespace :admin do
-    resources :images
+    resources :images do
+      collection do
+        get 'pre' => 'images#index_pre'
+        get 'post' => 'images#index_post'
+      end
+    end
     resources :tags
+    root to: 'analytics#index'
   end
   
   root to: 'home#index'

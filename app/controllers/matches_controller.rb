@@ -1,6 +1,21 @@
 class MatchesController < ApplicationController
 
-  respond_to :js
+  respond_to :js, :json
+  
+  def index
+    @matches = Match.includes(:pre_image,:post_image)
+    respond_with(@matches, {
+      only: [:user_id], 
+      include: {
+        pre_image: {
+          only: [:id,:latitude,:longitude]
+        },
+        post_image: {
+          only: [:id,:latitude,:longitude]
+        }
+      }
+    })
+  end
 
   def exists
     if Match.exists?(pre_image_id: params[:pre], post_image_id: params[:post], user_id: current_user.id)

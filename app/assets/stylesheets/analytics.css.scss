@@ -1,3 +1,24 @@
 // Place all the styles related to the analytics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#map {
+	float: right;
+	width: 75%;
+	height: 640px;
+}
+
+p {
+	background: white;
+	margin: 0 10px;
+	padding: 5px;
+	label { min-width: 100px; }
+	span { 
+		float: right; 
+		margin-right: 25px;
+	}
+}
+
+p:nth-child(2n) {
+	background: #efefef;
+}
