@@ -12,4 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require home
+//= require images
+//= require annotations
+//= require matches
+//= require tags
+//= require jquery.loupe.min
