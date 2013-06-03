@@ -1,6 +1,5 @@
 console.log("loading post image <%= @image.full_url %>");
-$("#post").attr("src","<%= @image.full_url %>");
-$("#post").loupe();
+$("#post, .post-loupe img").attr("src","<%= @image.full_url %>");
 
 gPostPosition = <%= @image.position %>;
 gPostId = <%= @image.id %>;

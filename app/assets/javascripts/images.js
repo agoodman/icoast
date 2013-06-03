@@ -12,6 +12,8 @@ $(function() {
 	$("#shuffle-post").click(function() { findRandomPost(); });
 	
 	$("#pre, #pre-thumb0, #pre-thumb1, #pre-thumb2, #post, #post-thumb0, #post-thumb1, #post-thumb2").load(function() { $(this).removeClass('loading'); });
+	$("#pre").loupe({loupe: 'pre-loupe'});
+	$("#post").loupe({loupe: 'post-loupe'});
 });
 
 function showPre(imageId) {
