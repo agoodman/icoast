@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class TagTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  should belong_to :user
+  should have_many :annotations
+  should have_many :images
+
 end

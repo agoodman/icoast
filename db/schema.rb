@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130520181336) do
+ActiveRecord::Schema.define(:version => 20130608194025) do
 
   create_table "annotations", :force => true do |t|
     t.integer   "image_id"
@@ -40,11 +40,11 @@ ActiveRecord::Schema.define(:version => 20130520181336) do
   add_index "images", ["position"], :name => "index_images_on_position"
 
   create_table "matches", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "post_image_id"
-    t.integer  "pre_image_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer   "user_id"
+    t.integer   "post_image_id"
+    t.integer   "pre_image_id"
+    t.timestamp "created_at",    :null => false
+    t.timestamp "updated_at",    :null => false
   end
 
   create_table "tags", :force => true do |t|
@@ -52,21 +52,22 @@ ActiveRecord::Schema.define(:version => 20130520181336) do
     t.timestamp "created_at", :null => false
     t.timestamp "updated_at", :null => false
     t.boolean   "regime"
+    t.integer   "user_id"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.string    "email",                                 :null => false
+    t.string    "encrypted_password",                    :null => false
+    t.string    "reset_password_token"
+    t.timestamp "reset_password_sent_at"
+    t.timestamp "remember_created_at"
+    t.integer   "sign_in_count",          :default => 0
+    t.timestamp "current_sign_in_at"
+    t.timestamp "last_sign_in_at"
+    t.string    "current_sign_in_ip"
+    t.string    "last_sign_in_ip"
+    t.timestamp "created_at",                            :null => false
+    t.timestamp "updated_at",                            :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

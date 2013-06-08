@@ -25,6 +25,12 @@ group :development, :test do
   gem 'sqlite3'  
 end
 
+group :test do
+  gem 'shoulda'
+  gem 'factory_girl_rails'
+  gem 'faker'
+end
+
 group :production do
   gem 'pg'
   gem 'mysql2'

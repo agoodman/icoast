@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class MatchTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  should belong_to :user
+  should belong_to :pre_image
+  should belong_to :post_image
+  
 end
