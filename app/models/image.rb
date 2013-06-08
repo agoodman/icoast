@@ -12,7 +12,7 @@ class Image < ActiveRecord::Base
   scope :pre, where(pre: true)
   scope :post, where(pre: false)
   scope :nearby, lambda {|lat,lng,rng=DELTA| where('latitude > ?',lat-rng).where('latitude <= ?',lat+rng).where('longitude > ?',lng-rng).where('longitude <= ?',lng+rng)}
-  scope :random_post, lambda {|max| post.where(position: rand(max)).limit(1) }
+  scope :random, lambda {|max| where(position: rand(max)).limit(1) }
   scope :enabled, where(enabled: true)
 
   def self.update_positions(strategy)

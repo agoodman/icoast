@@ -4,11 +4,11 @@ class ImagesController < ApplicationController
   
   def index
     @tags = Tag.scoped
-    # here, there be hacks
+    # here, there be <strike>hacks</strike> preferences for initial image
     @pre_position = 2949
     @post_position = 80
     # TODO: decide whether there should be a random image here or a static predefined image
-    # @post_position = Image.enabled.random_post(Image.post.enabled.count).first.position
+    # @post_position = Image.post.enabled.random(Image.post.enabled.count).first.position
   end
   
   def index_pre
@@ -52,7 +52,7 @@ class ImagesController < ApplicationController
   end
   
   def random_post
-    @image = Image.enabled.random_post(Image.post.enabled.count).first
+    @image = Image.post.enabled.random(Image.post.enabled.count).first
     respond_with(@image)
   end
   
