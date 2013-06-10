@@ -50,9 +50,7 @@
 			- for tag in (@tags.visual+current_user.tags).shuffle
 				%li
 					%input{type: 'checkbox', id: dom_id(tag), tag_id: tag.id}= tag.name
-			%li
-				%input{type: 'checkbox'} Other
-				%input{type: 'text', id: 'new_tag'}
+		%textarea#comment{rows: 3}
 
 #map{style: 'display:none'}
 #legend{style: 'display:none'}

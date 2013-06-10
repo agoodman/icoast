@@ -5,6 +5,7 @@ class Image < ActiveRecord::Base
   has_many :annotations
   has_many :tags, through: :annotations
   has_many :matches, foreign_key: 'post_image_id'
+  has_many :comments
   
   attr_accessible :filename, :full_url, :geo_area, :latitude, :longitude, :pre, :storm, :taken_at, :thumb_url, :position, :enabled
   

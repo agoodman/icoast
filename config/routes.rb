@@ -15,6 +15,7 @@ Usgs::Application.routes.draw do
   resources :annotations
   resources :analytics, only: :index
   resources :matches
+  resources :comments
   
   namespace :admin do
     resources :images do

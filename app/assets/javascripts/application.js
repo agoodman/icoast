@@ -17,4 +17,5 @@
 //= require annotations
 //= require matches
 //= require tags
+//= require comments
 //= require jquery.loupe.min

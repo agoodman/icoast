@@ -11,5 +11,6 @@ class User < ActiveRecord::Base
   has_many :annotations
   has_many :tags
   has_many :matches
+  has_many :comments
   
 end

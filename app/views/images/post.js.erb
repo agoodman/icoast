@@ -13,3 +13,5 @@ $(".post h1").html("POST-STORM at (<%= @image.latitude %>, <%= @image.longitude 
 $("#match").prop("checked",<% if @image.matches.for_user(current_user).any? %>true<% else %>false<% end %>);
 
 <%= render partial: 'annotations', locals: { image: @image } %>
+
+$("#comment").val('<%= @image.comments.where(user_id: current_user.id).first.body rescue nil %>');
