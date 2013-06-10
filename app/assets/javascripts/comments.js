@@ -1,6 +1,12 @@
 $(function() {
 	$("#comment").blur(function() {
-		createComment(gPostId,$(this).val());
+		var body = $(this).val();
+		var commentId = $(this).attr("comment_id");
+		if( commentId ) {
+			updateComment(commentId,body);
+		}else{
+			createComment(gPostId,body);
+		}
 	});
 });
 
@@ -15,11 +21,31 @@ function createComment(imageId,body) {
 			}
 		},
 		success: function(data, textStatus, jqxhr) {
+			$("#comment").attr("comment_id",data.id);
 			console.log("Added comment to image "+imageId);
 		},
 		error: function(jqxhr, textStatus, errorThrown) {
 			alert("Unable to save comment: "+textStatus);
-			console.log("Error adding comment: "+errorThrown);
+			console.log("Error creating comment: "+errorThrown);
+		}
+	});
+}
+
+function updateComment(commentId,body) {
+	$.ajax({
+		type: "PUT",
+		url: '/comments/'+commentId+'.json',
+		data: {
+			comment: {
+				body: body
+			}
+		},
+		success: function(data, textStatus, jqxhr) {
+			console.log("Added comment to image "+imageId);
+		},
+		error: function(jqxhr, textStatus, errorThrown) {
+			alert("Unable to update comment: "+textStatus);
+			console.log("Error updating comment: "+errorThrown);
 		}
 	});
 }

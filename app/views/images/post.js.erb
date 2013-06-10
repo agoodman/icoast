@@ -14,4 +14,8 @@ $("#match").prop("checked",<% if @image.matches.for_user(current_user).any? %>tr
 
 <%= render partial: 'annotations', locals: { image: @image } %>
 
-$("#comment").val('<%= @image.comments.where(user_id: current_user.id).first.body rescue nil %>');
+<% if comment=@image.comments.where(user_id: current_user.id).first -%>
+$("#comment").val('<%= comment.body %>').attr("comment_id", <%= comment.id %>);
+<% else -%>
+$("#comment").val(null).attr("comment_id", null);
+<% end -%>

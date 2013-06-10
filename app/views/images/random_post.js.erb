@@ -8,4 +8,10 @@ $(".post h1").html("POST-STORM at (<%= @image.latitude %>, <%= @image.longitude 
 
 <%= render partial: 'annotations', locals: { image: @image } %>
 
+<% if comment=@image.comments.where(user_id: current_user.id).first -%>
+$("#comment").val('<%= comment.body %>').attr("comment_id", <%= comment.id %>);
+<% else -%>
+$("#comment").val(null).attr("comment_id", null);
+<% end -%>
+
 findNearestPre(<%= @image.position %>);
