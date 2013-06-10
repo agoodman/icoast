@@ -8,7 +8,7 @@ $("#post-thumb0").attr("src","<%= @thumbs[0] %>");
 $("#post-thumb1").attr("src","<%= @thumbs[1] %>");
 $("#post-thumb2").attr("src","<%= @thumbs[2] %>");
 
-$(".post h1").html("POST-STORM at (<%= @image.latitude %>, <%= @image.longitude %>)");
+$(".post h1").html("<%= @image.title %>");
 
 $("#match").prop("checked",<% if @image.matches.for_user(current_user).any? %>true<% else %>false<% end %>);
 

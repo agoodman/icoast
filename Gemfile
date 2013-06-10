@@ -10,6 +10,7 @@ gem 'will_paginate'
 gem 'newrelic_rpm'
 gem 'devise'
 gem 'faker'
+gem 'geocoder'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

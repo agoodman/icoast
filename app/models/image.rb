@@ -25,4 +25,13 @@ class Image < ActiveRecord::Base
     annotations.for_user(user).map(&:tag) rescue []
   end
   
+  def title
+    geo=Geocoder.search("#{latitude},#{longitude}").first rescue nil
+    puts geo.address_components
+    locality = geo.address_components.select {|e| e['types'].include?('locality')}.first['short_name'] rescue nil
+    city = geo.address_components.select {|e| e['types'].include?('administrative_area_level_3')}.first['short_name'] rescue nil
+    state = geo.address_components.select {|e| e['types'].include?('administrative_area_level_1')}.first['short_name'] rescue nil
+    "#{pre ? 'PRE' : 'POST'}-STORM at #{taken_at.to_formatted_s(:long)} in #{city || locality} #{state}"
+  end
+  
 end
