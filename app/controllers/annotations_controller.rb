@@ -1,12 +1,12 @@
 class AnnotationsController < ApplicationController
   
-  respond_to :js
+  respond_to :js, :json
   
   def create
     @annotation = Annotation.new(params[:annotation])
     @annotation.user = current_user
     @annotation.save
-    head :ok
+    respond_with(@annotation)
   end
   
   def destroy

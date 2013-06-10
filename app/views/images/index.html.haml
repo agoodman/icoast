@@ -47,9 +47,12 @@
 					%input{type: 'checkbox', id: dom_id(tag), tag_id: tag.id} #{tag.name}
 		%h3 Visual Coastal Changes
 		%ul.changes
-			- for tag in @tags.visual.shuffle
+			- for tag in (@tags.visual+current_user.tags).shuffle
 				%li
 					%input{type: 'checkbox', id: dom_id(tag), tag_id: tag.id}= tag.name
+			%li
+				%input{type: 'checkbox'} Other
+				%input{type: 'text', id: 'new_tag'}
 
 #map{style: 'display:none'}
 #legend{style: 'display:none'}

@@ -4,18 +4,18 @@ $(function() {
 		
 		if( checked ) {
 			var tagId = $(this).attr("tag_id");
-			addTag(gPostId,tagId);
+			createAnnotation(gPostId,tagId);
 		}else{
 			var annotationId = $(this).attr("annotation_id");
-			removeTag(annotationId);
+			deleteAnnotation(annotationId);
 		}
 	});
 });
 
-function addTag(imageId,tagId) {
+function createAnnotation(imageId,tagId) {
 	$.ajax({
 		type: "POST",
-		url: '/annotations',
+		url: '/annotations.json',
 		data: {
 			annotation: {
 				image_id: imageId,
@@ -23,6 +23,7 @@ function addTag(imageId,tagId) {
 			}
 		},
 		success: function(data, textStatus, jqxhr) {
+			$("[tag_id='"+tagId+"']").attr("annotation_id",data.id);
 			console.log("Added tag "+tagId+" to image "+imageId);
 		},
 		error: function(jqxhr, textStatus, errorThrown) {
@@ -32,11 +33,13 @@ function addTag(imageId,tagId) {
 	});	
 }
 
-function removeTag(annotationId) {
+function deleteAnnotation(annotationId) {
 	$.ajax({
 		type: "DELETE",
 		url: "/annotations/"+annotationId,
-		success: function(data, textStatus, jqxhr) {},
+		success: function(data, textStatus, jqxhr) {
+			$("[tag_id='"+tagId+"']").attr("annotation_id",null);
+		},
 		error: function(jqxhr, textStatus, errorThrown) {
 			alert("Unable to remove tag: "+textStatus);
 			console.log("Error removing tag: "+errorThrown);
