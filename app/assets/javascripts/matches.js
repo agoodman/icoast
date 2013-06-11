@@ -23,6 +23,7 @@ function addMatch(preId,postId) {
 			}
 		},
 		success: function(data, textStatus, jqxhr) {
+			$("#match").attr("match_id", data.id);
 			console.log("Added match for pre: "+preId+" post: "+postId);
 		},
 		error: function(jqxhr, textStatus, errorThrown) {
@@ -37,7 +38,9 @@ function removeMatch(matchId) {
 	$.ajax({
 		type: "DELETE",
 		url: "/matches/"+matchId,
-		success: function(data, textStatus, jqxhr) {},
+		success: function(data, textStatus, jqxhr) {
+			$("#match").attr("match_id", null);
+		},
 		error: function(jqxhr, textStatus, errorThrown) {
 			alert("Unable to remove match: "+textStatus);
 			console.log("Error removing match: "+errorThrown);
