@@ -1,0 +1,28 @@
+/*
+ * This is a manifest file that'll be compiled into home.css, which will include all the files
+ * listed below.
+ *
+ *= require_self
+ */
+
+body {
+	background-image: url('http://coastal.er.usgs.gov/hurricanes/oblique/images/2012/1105/2012_1105_172701d.jpg');
+	background-position: center;
+	font-family: Helvetica Neue, Helvetica;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+section {
+	margin: 50px auto;
+	width: 480px;
+	background: #eee;
+	opacity: 0.75;
+	box-sizing: border-box;
+	padding: 25px;
+}
