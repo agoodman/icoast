@@ -12,8 +12,18 @@ $(function() {
 	$("#shuffle-post").click(function() { findRandomPost(); });
 	
 	$("#pre, #pre-thumb0, #pre-thumb1, #pre-thumb2, #post, #post-thumb0, #post-thumb1, #post-thumb2").load(function() { $(this).removeClass('loading'); });
-	$("#pre").loupe({loupe: 'pre-loupe'});
+	// $("#pre").loupe({loupe: 'pre-loupe'});
 	$("#post").loupe({loupe: 'post-loupe'});
+	
+	$("section.task button.next").click(function() { nextTask(); });
+	$("section.task button.done").click(function() { resetWorkflow(); });
+
+	$("section.task button.next, section.task button.done").click(function () {
+		$("html,body").animate({
+			scrollTop:$($(this).attr("href")).offset().top - 100
+		}, 500);
+		return false;
+	});
 });
 
 function showPre(imageId) {
@@ -99,3 +109,22 @@ function hideMap() {
 	$('#map, #legend').hide();
 }
 
+function resetWorkflow() {
+	$('section.task').removeClass('active')
+		.first()
+		.addClass('active');
+	$('section.task').find('input, textarea, button')
+		.prop("disabled", true);
+	$('section.task.active').find('input, textarea, button')
+		.prop("disabled", false);
+}
+
+function nextTask() {
+	$('section.task.active + section.task').addClass('active')
+		.prev()
+		.removeClass('active');
+	$('section.task').find('input, textarea, button')
+		.prop("disabled", true);
+	$('section.task.active').find('input, textarea, button')
+		.prop("disabled", false);
+}

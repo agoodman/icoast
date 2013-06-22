@@ -1,16 +1,19 @@
 class ImagesController < ApplicationController
   
   before_filter :authenticate_user!
+  before_filter :set_defaults, only: [ :index, :alt ]
   
   respond_to :html, :js, :json
   
   def index
     @tags = Tag.scoped
-    # here, there be <strike>hacks</strike> preferences for initial image
-    @pre_position = 2949
-    @post_position = 80
     # TODO: decide whether there should be a random image here or a static predefined image
     # @post_position = Image.post.enabled.random(Image.post.enabled.count).first.position
+  end
+  
+  def alt
+    @tags = Tag.scoped
+    render layout: 'alt'
   end
   
   def index_pre
@@ -63,6 +66,12 @@ class ImagesController < ApplicationController
     @thumbs[0] = Image.where(pre: @image.pre).where(position: @image.position-1).limit(1).first.thumb_url rescue nil
     @thumbs[1] = @image.thumb_url rescue nil
     @thumbs[2] = Image.where(pre: @image.pre).where(position: @image.position+1).limit(1).first.thumb_url rescue nil
+  end
+
+  def set_defaults
+    # here, there be <strike>hacks</strike> preferences for initial image
+    @pre_position = 2949
+    @post_position = 80
   end
   
 end

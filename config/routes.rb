@@ -3,6 +3,7 @@ Usgs::Application.routes.draw do
   devise_for :users
 
   get '/images' => 'images#index'
+  get '/images/alt' => 'images#alt'
   get '/images/pre' => 'images#index_pre'
   get '/images/post' => 'images#index_post'
   get '/images/post/random' => 'images#random_post'

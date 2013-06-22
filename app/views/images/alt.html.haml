@@ -1,0 +1,74 @@
+%section.fixed
+	.post
+		%h1 POST
+		%img#post{src: nil}
+	.pre
+		%h1 PRE
+		%img#pre{src: nil}
+		- if false
+			%ul.thumbs#pre-thumbs
+				%li.thumb
+					%img#pre-thumb0{src: nil}
+				%li.thumb.active
+					%img#pre-thumb1{src: nil}
+				%li.thumb
+					%img#pre-thumb2{src: nil}
+
+%section.task#task-select
+	%h3 Select Photo
+	%p
+		%label Task 1:
+		Choose a Post-Storm photo to classify by clicking 
+		%strong Random Post Photo 
+		or 
+		%strong Map 
+		to classify a Post-Storm photo in a particular location.
+	%button#shuffle-post Random Post-Storm Image
+	%button#show-map Map
+	%button.next{href: '#task-photo'} Next
+%section.task#task-photo
+	%h3 Photo Match
+	%p
+		%label Task 2:
+		Find a matching Pre-Storm photo by clicking on the arrows to the right and left of the pre-storm photo, then mark the 
+		%strong Photo Match
+		checkbox.
+	%ul.match
+		%li
+			%input{type: 'checkbox', id: 'match'} Pre-Storm Photo Matches Post-Storm Photo
+	%button.next{href: '#task-regime'} Next
+%section.task#task-regime
+	%h3 Coastal Change Regimes
+	%p
+		%label Task 3:
+		Mark all Coastal Change Regimes you see in the Post-Storm photo.
+	%ul.regimes
+		- for tag in @tags.regime
+			%li
+				%input{type: 'checkbox', id: dom_id(tag), tag_id: tag.id} #{tag.name}
+	%button.next{href: '#task-visual'} Next
+%section.task#task-visual
+	%h3 Visual Coastal Changes
+	%p
+		%label Task 4:
+		Mark all Visual Coastal Changes you see in the Post-Storm photo.
+	%ul.changes
+		- for tag in (@tags.visual+current_user.tags).shuffle
+			%li
+				%input{type: 'checkbox', id: dom_id(tag), tag_id: tag.id}= tag.name
+	%textarea#comment{rows: 3}
+	%button.done{href: '#task-select'} Done
+
+#map{style: 'display:none'}
+#legend{style: 'display:none'}
+	Click any 
+	%span RED 
+	Post-Storm photo to Classify
+
+:javascript
+	var gPrePosition = #{ @pre_position };
+	var gPostPosition = #{ @post_position };
+	var gPostId = 0;
+	var gPreId = 0;
+	showPre(gPrePosition);
+	showPost(gPostPosition);

@@ -19,3 +19,5 @@ $("#comment").val('<%= escape_javascript(comment.body) %>').attr("comment_id", <
 <% else -%>
 $("#comment").val(null).attr("comment_id", null);
 <% end -%>
+
+resetWorkflow();
