@@ -1,0 +1,165 @@
+section.fixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 50%;
+}
+
+section.task {
+	margin-left: 50%;
+	width: 50%;
+	box-sizing: border-box;
+	padding: 25px;
+	color: #aaa;
+	
+	button.next, button.done { 
+		display: none; 
+		float: right;
+	}
+	
+	&.active {
+		background: #eee;
+		color: black;
+
+		button.next, button.done { 
+			display: block; 
+		}
+	}
+}
+
+section {
+	transition-property: background-color, color;
+	transition-duration: 2s;
+	
+	.pre, .actions, .post { float: left; }
+	.actions button { display: block; }
+	#pre, #post { 
+		width: 100%;
+	}
+	.pre, .post { 
+		position: relative;
+		box-sizing: border-box;
+		button {
+			float: left;
+		}
+		ul:after {
+			content: '.';
+			visibility: hidden;
+			clear: both;
+			display: block;
+		}
+		li { 
+			float: left; 
+			width: 5%;
+			box-sizing: border-box;
+			img { width: 100%;}
+		}
+		li.thumb {
+			width: 32%;
+		}
+		li.thumb.active {
+			width: 36%;
+			padding: 0 3px;
+		}
+		li.thumb:first-child, li.thumb:last-child {
+			cursor: pointer;
+		}
+	}
+	.pre { 
+		padding-right: 5px; 
+		h1 + button { 
+			position: absolute;
+			top: 0;
+			right: 5px;
+		}
+		h2 {
+			margin-left: 10px;
+		}
+	}
+	.post { 
+		padding-left: 5px; 
+		h1 + button {
+			position: absolute;
+			top: 0;
+			left: 5px;
+		}
+		.actions {
+			width: 100%;
+			button { margin: 0 5px 5px 0; }
+			&:after {
+				content: '.';
+				visibility: hidden;
+				clear: both;
+				display: block;	
+			}
+		}
+	}
+	.actions { width: 10%; }
+	img {
+		width: 100%;
+	}
+	
+	p {
+		margin-top: 10px;
+		label { font-weight: bold; }
+		button, input[type='checkbox'] { margin-left: 20px; }
+	}
+	button { margin-top: 10px; }
+	ul.match, ul.regimes, ul.changes { 
+		margin-top: 10px;
+		clear: both;
+		li { 
+			min-width: 50%;
+			float: left; 
+			input[type='checkbox'] { margin-right: 5px; }
+		}
+	}
+	ul.match {
+		li { min-width: 100%; }
+	}
+	ul.regimes {
+		li { min-width: 25%; }
+	}
+	textarea {
+		display: block;
+		clear: both;
+	}
+	#show-map {
+		margin-left: 25px;
+	}
+	#save {
+		float: right;
+	}
+	
+	&:after, ul:after {
+		content: '.';
+		visibility: hidden;
+		clear: both;
+		display: block;
+	}
+}
+
+button { padding: 5px; }
+
+#map {
+	background: white;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 10;
+}
+
+#legend {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	z-index: 11;
+	padding: 10px;
+	background: white;
+	border: 1px solid black;
+	color: black;
+	span { color: red; }
+}
