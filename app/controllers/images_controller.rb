@@ -6,13 +6,15 @@ class ImagesController < ApplicationController
   respond_to :html, :js, :json
   
   def index
-    @tags = Tag.scoped
+    @groups = Group.scoped
+    @regimes = Tag.regime
     # TODO: decide whether there should be a random image here or a static predefined image
     # @post_position = Image.post.enabled.random(Image.post.enabled.count).first.position
   end
   
   def alt
-    @tags = Tag.scoped
+    @groups = Group.scoped
+    @regimes = Tag.regime
     render layout: 'alt'
   end
   

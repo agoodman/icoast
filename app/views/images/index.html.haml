@@ -42,14 +42,17 @@
 				%input{type: 'checkbox', id: 'match'} Pre-Storm Photo Matches Post-Storm Photo
 		%h3 Coastal Change Regimes
 		%ul.regimes
-			- for tag in @tags.regime
+			- for tag in @regimes
 				%li
 					%input{type: 'checkbox', id: dom_id(tag), tag_id: tag.id} #{tag.name}
 		%h3 Visual Coastal Changes
-		%ul.changes
-			- for tag in (@tags.visual+current_user.tags).shuffle
-				%li
-					%input{type: 'checkbox', id: dom_id(tag), tag_id: tag.id}= tag.name
+		- for group in @groups
+			- unless group.name.blank?
+				%h4= group.name
+			%ul.changes
+				- for tag in group.tags.visual
+					%li
+						%input{type: 'checkbox', id: dom_id(tag), tag_id: tag.id}= tag.name
 		%textarea#comment{rows: 3}
 
 #map{style: 'display:none'}

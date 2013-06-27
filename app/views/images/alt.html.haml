@@ -43,7 +43,7 @@
 		%label Task 3:
 		Mark all Coastal Change Regimes you see in the Post-Storm photo.
 	%ul.regimes
-		- for tag in @tags.regime
+		- for tag in @regimes
 			%li
 				%input{type: 'checkbox', id: dom_id(tag), tag_id: tag.id} #{tag.name}
 	%button.next{href: '#task-visual'} Next
@@ -52,10 +52,13 @@
 	%p
 		%label Task 4:
 		Mark all Visual Coastal Changes you see in the Post-Storm photo.
-	%ul.changes
-		- for tag in (@tags.visual+current_user.tags).shuffle
-			%li
-				%input{type: 'checkbox', id: dom_id(tag), tag_id: tag.id}= tag.name
+	- for group in @groups
+		- unless group.name.blank?
+			%h4= group.name
+		%ul.changes
+			- for tag in group.tags
+				%li
+					%input{type: 'checkbox', id: dom_id(tag), tag_id: tag.id}= tag.name
 	%textarea#comment{rows: 3}
 	%button.done{href: '#task-select'} Done
 
@@ -70,5 +73,4 @@
 	var gPostPosition = #{ @post_position };
 	var gPostId = 0;
 	var gPreId = 0;
-	showPre(gPrePosition);
 	showPost(gPostPosition);

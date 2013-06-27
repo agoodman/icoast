@@ -1,7 +1,8 @@
 class Tag < ActiveRecord::Base
 
   belongs_to :user
-  has_many :annotations
+  belongs_to :group
+  has_many :annotations, dependent: :destroy
   has_many :images, through: :annotations
 
   attr_accessible :name, :regime, :user_id

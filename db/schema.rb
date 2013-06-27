@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130610132321) do
+ActiveRecord::Schema.define(:version => 20130627202224) do
 
   create_table "annotations", :force => true do |t|
     t.integer   "image_id"
@@ -21,10 +21,28 @@ ActiveRecord::Schema.define(:version => 20130610132321) do
     t.integer   "user_id"
   end
 
+  add_index "annotations", ["image_id", "tag_id", "user_id"], :name => "index_annotations_on_image_id_and_tag_id_and_user_id"
+  add_index "annotations", ["image_id", "tag_id"], :name => "index_annotations_on_image_id_and_tag_id"
+  add_index "annotations", ["image_id", "user_id"], :name => "index_annotations_on_image_id_and_user_id"
+  add_index "annotations", ["image_id"], :name => "index_annotations_on_image_id"
+  add_index "annotations", ["tag_id", "user_id"], :name => "index_annotations_on_tag_id_and_user_id"
+  add_index "annotations", ["tag_id"], :name => "index_annotations_on_tag_id"
+  add_index "annotations", ["user_id"], :name => "index_annotations_on_user_id"
+
   create_table "comments", :force => true do |t|
-    t.integer  "image_id"
-    t.integer  "user_id"
-    t.text     "body"
+    t.integer   "image_id"
+    t.integer   "user_id"
+    t.text      "body"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
+  end
+
+  add_index "comments", ["image_id", "user_id"], :name => "index_comments_on_image_id_and_user_id"
+  add_index "comments", ["image_id"], :name => "index_comments_on_image_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "groups", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -55,13 +73,20 @@ ActiveRecord::Schema.define(:version => 20130610132321) do
     t.timestamp "updated_at",    :null => false
   end
 
+  add_index "matches", ["pre_image_id", "post_image_id", "user_id"], :name => "index_matches_on_pre_image_id_and_post_image_id_and_user_id"
+  add_index "matches", ["pre_image_id", "post_image_id"], :name => "index_matches_on_pre_image_id_and_post_image_id"
+
   create_table "tags", :force => true do |t|
     t.string    "name"
     t.timestamp "created_at", :null => false
     t.timestamp "updated_at", :null => false
     t.boolean   "regime"
     t.integer   "user_id"
+    t.integer   "group_id"
   end
+
+  add_index "tags", ["group_id"], :name => "index_tags_on_group_id"
+  add_index "tags", ["user_id"], :name => "index_tags_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string    "email",                                 :null => false
