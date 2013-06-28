@@ -1,3 +1,10 @@
+a { text-decoration: none; color: inherit; }
+
+.ui-widget {
+	font-size: 0.8em;
+	font-family: Helvetica Neue, Helvetica;
+}
+
 section.fixed {
 	position: fixed;
 	top: 0;
@@ -12,11 +19,16 @@ section.task {
 	box-sizing: border-box;
 	padding: 25px;
 	color: #aaa;
+	position: relative;
+	
+	button { font-weight: bold; }
 	
 	button.next, button.done { 
 		display: none; 
 		float: right;
 	}
+	
+	ul, h4, textarea { display: none; }
 	
 	&.active {
 		background: #eee;
@@ -25,6 +37,8 @@ section.task {
 		button.next, button.done { 
 			display: block; 
 		}
+
+		ul, h4, textarea { display: block; }
 	}
 }
 
@@ -117,9 +131,6 @@ section {
 	}
 	ul.match {
 		li { min-width: 100%; }
-	}
-	ul.regimes {
-		li { min-width: 25%; }
 	}
 	textarea {
 		display: block;

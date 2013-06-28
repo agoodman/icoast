@@ -11,10 +11,12 @@ $("#post-thumb2").attr("src","<%= @thumbs[2] %>");
 $(".post h1").html("<%= @image.title %>");
 
 <% if (matches=@image.matches.for_user(current_user)).any? -%>
-$("#match").prop("checked",true);
+$("#match_yes").prop("checked",true);
+$("#match_no").prop("checked",false).attr("match_id",<%= matches.first.id %>);
 showPre(<%= matches.first.pre_image.position %>);
 <% else %>
-$("#match").prop("checked",false);
+$("#match_yes").prop("checked",false);
+$("#match_no").prop("checked",true);
 findNearestPre(gPostPosition);
 <% end %>
 

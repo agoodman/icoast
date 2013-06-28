@@ -12,7 +12,7 @@ $(function() {
 	$("#shuffle-post").click(function() { findRandomPost(); });
 	
 	$("#pre, #pre-thumb0, #pre-thumb1, #pre-thumb2, #post, #post-thumb0, #post-thumb1, #post-thumb2").load(function() { $(this).removeClass('loading'); });
-	// $("#pre").loupe({loupe: 'pre-loupe'});
+	$("#pre").loupe({loupe: 'pre-loupe'});
 	$("#post").loupe({loupe: 'post-loupe'});
 	
 	$("section.task button.next").click(function() { nextTask(); });
@@ -68,7 +68,7 @@ function initializeMap() {
 	var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
 	// load placemarks for images
-	loadMarkers(map, true, 1, 1000);
+	// loadMarkers(map, true, 1, 1000);
 	loadMarkers(map, false, 1, 1000);
 	
 	mapInitialized = true;
@@ -113,18 +113,22 @@ function resetWorkflow() {
 	$('section.task').removeClass('active')
 		.first()
 		.addClass('active');
-	$('section.task').find('input, textarea, button')
-		.prop("disabled", true);
-	$('section.task.active').find('input, textarea, button')
-		.prop("disabled", false);
+	// $('section.task').find('input, textarea, button')
+	// 	.prop("disabled", true);
+	// $('section.task.active').find('input, textarea, button')
+	// 	.prop("disabled", false);
+		
+	refreshUI();
 }
 
 function nextTask() {
 	$('section.task.active + section.task').addClass('active')
 		.prev()
 		.removeClass('active');
-	$('section.task').find('input, textarea, button')
-		.prop("disabled", true);
-	$('section.task.active').find('input, textarea, button')
-		.prop("disabled", false);
+	// $('section.task').find('input, textarea, button')
+	// 	.prop("disabled", true);
+	// $('section.task.active').find('input, textarea, button')
+	// 	.prop("disabled", false);
+		
+	refreshUI();
 }

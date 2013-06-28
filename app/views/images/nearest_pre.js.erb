@@ -11,7 +11,8 @@ gPrePosition = <%= @image.position %>;
 gPreId = <%= @image.id %>;
 
 matchExists(gPreId,gPostId,function(exists) {
-	$("#match").prop("checked",exists);
+	$("#match_yes").prop("checked",exists);
+	$("#match_no").prop("checked",!exists);
 });
 <% else -%>
 alert("No matching pre image");

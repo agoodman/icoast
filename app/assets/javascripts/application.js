@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require home
 //= require images
 //= require annotations
@@ -19,3 +20,8 @@
 //= require tags
 //= require comments
 //= require jquery.loupe.min
+
+function refreshUI() {
+	$("input[type='checkbox']").button();
+	$(".match li").buttonset();
+}

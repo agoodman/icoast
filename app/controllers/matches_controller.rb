@@ -25,11 +25,13 @@ class MatchesController < ApplicationController
     end
   end
   
+  # POST /matches
+  # should be idempotent
   def create
-    @match = Match.new(params[:match])
-    @match.user = current_user
-    @match.save
-    head :ok
+    @match = Match.find_or_create_by_user_id_and_post_image_id_and_pre_image_id(current_user.id, params[:match][:post_image_id], params[:match][:pre_image_id])
+    respond_to do |format|
+      format.json { render json: @match }
+    end
   end
   
   def destroy

@@ -11,5 +11,6 @@ $("#pre-thumb2").attr("src","<%= @thumbs[2] %>");
 $(".pre h1").html("<%= @image.title %>");
 
 matchExists(gPreId,gPostId,function(exists) {
-	$("#match").prop("checked",exists);
+	$("#match_yes").prop("checked",exists);
+	$("#match_no").prop("checked",!exists);
 });

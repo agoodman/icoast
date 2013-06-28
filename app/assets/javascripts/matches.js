@@ -1,8 +1,19 @@
 $(function() {
-	$("input#match[type='checkbox']").change(function() {
+	$("input#match_yes").change(function() {
 		var checked = $(this).prop("checked");
 		
 		if( checked ) {
+			addMatch(gPreId,gPostId);
+		}else{
+			var matchId = $(this).attr("match_id");
+			removeMatch(matchId);
+		}
+	});
+	
+	$("input#match_no").change(function() {
+		var checked = $(this).prop("checked");
+		
+		if( !checked ) {
 			addMatch(gPreId,gPostId);
 		}else{
 			var matchId = $(this).attr("match_id");
@@ -23,7 +34,7 @@ function addMatch(preId,postId) {
 			}
 		},
 		success: function(data, textStatus, jqxhr) {
-			$("#match").attr("match_id", data.id);
+			$("#match_no").attr("match_id", data.id);
 			console.log("Added match for pre: "+preId+" post: "+postId);
 		},
 		error: function(jqxhr, textStatus, errorThrown) {
@@ -39,7 +50,7 @@ function removeMatch(matchId) {
 		type: "DELETE",
 		url: "/matches/"+matchId,
 		success: function(data, textStatus, jqxhr) {
-			$("#match").attr("match_id", null);
+			$("#match_no").attr("match_id", null);
 		},
 		error: function(jqxhr, textStatus, errorThrown) {
 			alert("Unable to remove match: "+textStatus);
