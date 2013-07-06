@@ -92,6 +92,11 @@ section {
 	ul.regimes {
 		li { min-width: 25%; }
 	}
+	ul.regimes, ul.changes {
+		li {
+			label { padding: 10px; box-sizing: border-box; }
+		}
+	}
 	.actions button { font-size: 21pt; }
 	#show-map {
 		margin-left: 25px;

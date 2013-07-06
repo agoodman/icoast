@@ -1,5 +1,26 @@
 a { text-decoration: none; color: inherit; }
 
+nav {
+	min-height: 50px;
+	background: white;
+	padding: 25px;
+	box-sizing: border-box;
+	h2 {
+		font-size: 11pt;
+		font-weight: normal;
+		span {
+			color: #cc0000;
+		}
+	}
+}
+
+nav, section {
+	transition-duration: 0.5s;
+	transition-property: width, margin;
+	-webkit-transition-duration: 0.5s;
+	-webkit-transition-property: width, margin;
+}
+
 .ui-widget {
 	font-size: 0.8em;
 	font-family: Helvetica Neue, Helvetica;
@@ -10,18 +31,23 @@ section.fixed {
 	top: 0;
 	left: 0;
 	bottom: 0;
-	width: 50%;
 }
 
+section.task:first-child { margin-top: 50px; }
+
 section.task {
-	margin-left: 50%;
-	width: 50%;
 	box-sizing: border-box;
 	padding: 25px;
 	color: #aaa;
 	position: relative;
 	
-	button { font-weight: bold; }
+	button { 
+		font-weight: bold; 
+		text-transform: uppercase;
+		font-size: 14pt;
+		border: 1px solid black;
+		background: #eeeeee;
+	}
 	
 	button.next, button.done { 
 		display: none; 
@@ -52,6 +78,7 @@ section {
 		width: 100%;
 	}
 	.pre, .post { 
+		width: 100%;
 		position: relative;
 		box-sizing: border-box;
 		button {
@@ -81,7 +108,6 @@ section {
 		}
 	}
 	.pre { 
-		padding-right: 5px; 
 		h1 + button { 
 			position: absolute;
 			top: 0;
@@ -92,7 +118,6 @@ section {
 		}
 	}
 	.post { 
-		padding-left: 5px; 
 		h1 + button {
 			position: absolute;
 			top: 0;
@@ -126,13 +151,40 @@ section {
 		li { 
 			min-width: 50%;
 			float: left; 
-			input[type='checkbox'] { margin-right: 5px; }
+			input[type='checkbox'], input[type='radio'] { margin-right: 5px; display: none; }
+			label { 
+				cursor: pointer;
+				font-size: 11pt;
+				padding: 5px; 
+				box-sizing: border-box; 
+				display: inline-block; 
+				color: #004276;
+				background: #eeeeee;
+				border: 1px solid #004276;
+				font-weight: bold;
+				margin-bottom: 5px;
+				border-radius: 5px;
+			}
+			input:checked + label { 
+				color: #cc0000;
+				background: white;
+				border: 1px solid #cc0000; 
+			}
 		}
 	}
+	ul.regimes {
+		li {
+			min-width: 100%;
+			label {
+				margin-bottom: 10px;
+			}
+		}
+	} 
 	ul.match {
 		li { min-width: 100%; }
 	}
 	textarea {
+		width: 100%;
 		display: block;
 		clear: both;
 	}
@@ -173,4 +225,29 @@ button { padding: 5px; }
 	border: 1px solid black;
 	color: black;
 	span { color: red; }
+}
+
+@media screen and (max-height: 320px) {
+	section.fixed { width: 100px; }
+	nav, section.task { margin-left: 100px; }
+}
+@media screen and (min-height: 321px) and (max-height: 480px) {
+	section.fixed { width: 160px; }
+	nav, section.task { margin-left: 160px; }
+}
+@media screen and (min-height: 481px) and (max-height: 560px) {
+	section.fixed { width: 240px; }
+	nav, section.task { margin-left: 240px; }
+}
+@media screen and (min-height: 561px) and (max-height: 640px) {
+	section.fixed { width: 320px; }
+	nav, section.task { margin-left: 320px; }
+}
+@media screen and (min-height: 641px) and (max-height: 720px) {
+	section.fixed { width: 380px; }
+	nav, section.task { margin-left: 380px; }
+}
+@media screen and (min-height: 721px) {
+	section.fixed { width: 420px; }
+	nav, section.task { margin-left: 420px; }
 }

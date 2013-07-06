@@ -22,6 +22,6 @@
 //= require jquery.loupe.min
 
 function refreshUI() {
-	$("input[type='checkbox']").button();
-	$(".match li").buttonset();
+	// $("input[type='checkbox']").button();
+	// $(".match li").buttonset();
 }

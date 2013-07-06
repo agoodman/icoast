@@ -5,15 +5,15 @@
 	.pre
 		%h1 PRE
 		%img#pre{src: nil}
-		- if false
-			%ul.thumbs#pre-thumbs
-				%li.thumb
-					%img#pre-thumb0{src: nil}
-				%li.thumb.active
-					%img#pre-thumb1{src: nil}
-				%li.thumb
-					%img#pre-thumb2{src: nil}
+		%ul.thumbs#pre-thumbs
+			%li.thumb
+				%img#pre-thumb0{src: nil}
+			%li.thumb.active
+				%img#pre-thumb1{src: nil}
+			%li.thumb
+				%img#pre-thumb2{src: nil}
 
+%nav
 %section.task#task-select
 	%h3 Select Photo
 	%p
@@ -64,7 +64,8 @@
 				%li
 					%input{type: 'checkbox', id: dom_id(tag), tag_id: tag.id}
 					%label{for: dom_id(tag)}= tag.name
-	%textarea#comment{rows: 3}
+	%h4 Other Annotations and Comments
+	%textarea#comment{rows: 5}
 	%button.done{href: '#task-select'} Done
 
 #map{style: 'display:none'}

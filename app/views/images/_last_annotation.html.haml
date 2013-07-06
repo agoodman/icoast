@@ -1,0 +1,7 @@
+- last_annotation = image.annotations.order('created_at').select {|e| e.user_id==current_user.id}.last rescue nil
+- if last_annotation
+	%h2 
+		You last annotated this post-storm photo on 
+		%span #{last_annotation.created_at.strftime("%d %b %Y")} (#{time_ago_in_words(last_annotation.created_at)} ago).
+- else
+	%h2 You have not annotated this post-storm photo
