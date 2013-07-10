@@ -1,12 +1,11 @@
-%section
-	%h2 iCoast
-	%p Eyes on the Coast: Help Us See How Our Coasts Changed After Hurricane Sandy
-	- if user_signed_in?
-		%p You are signed in
-		%button#show-classify Continue classifying images
-		%button#sign-out Sign Out
-	- else
-		%p You must be signed in
-		%button#sign-in Sign In
-		%p Don't have an account?
-		%button#sign-up Sign Up
+%h2 iCoast
+%p Eyes on the Coast: Help Us See How Our Coasts Changed After Hurricane Sandy
+- if user_signed_in?
+	%p You are signed in
+	%button#show-classify Continue classifying images
+	%button#sign-out Sign Out
+- else
+	%p You must be signed in
+	%button#sign-in Sign In
+	%p Don't have an account?
+	%button#sign-up Sign Up
