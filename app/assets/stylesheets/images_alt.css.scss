@@ -56,6 +56,8 @@ section.task {
 	
 	ul, h4, textarea { display: none; }
 	
+	h4 { margin-top: 10px; }
+	
 	&.active {
 		background: #eee;
 		color: black;
@@ -181,9 +183,13 @@ section {
 		}
 	} 
 	ul.match {
-		li { min-width: 100%; }
+		li { 
+			min-width: 100%; 
+			label { margin-left: 10px; }
+		}
 	}
 	textarea {
+		margin-top: 10px;
 		width: 100%;
 		display: block;
 		clear: both;
