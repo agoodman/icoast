@@ -6,7 +6,7 @@ $("#pre-thumb0").attr("src","<%= @thumbs[0] %>");
 $("#pre-thumb1").attr("src","<%= @thumbs[1] %>");
 $("#pre-thumb2").attr("src","<%= @thumbs[2] %>");
 
-$(".pre h1").html("<%= @image.title %>");
+$(".pre h1").html("<%= escape_javascript(render(partial: 'title')) %>");
 gPrePosition = <%= @image.position %>;
 gPreId = <%= @image.id %>;
 
