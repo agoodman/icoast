@@ -4,7 +4,7 @@ $("#post, .post-loupe img").attr("src","<%= @image.full_url %>");
 gPostPosition = <%= @image.position %>;
 gPostId = <%= @image.id %>;
 
-$(".post h1").html("<%= @image.title %>");
+$(".post h1").html("<%= escape_javascript(render(partial: 'title')) %>");
 
 <%= render partial: 'annotations', locals: { image: @image } %>
 
