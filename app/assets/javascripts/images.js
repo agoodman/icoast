@@ -16,13 +16,14 @@ $(function() {
 	$("#post").loupe({loupe: 'post-loupe'});
 	
 	$("section.task button.next").click(function() { nextTask(); });
+	$("section.task button.prev").click(function() { prevTask(); });
 	$("section.task button.done").click(function() { resetWorkflow(); });
 
-	$("section.task button.next, section.task button.done").click(function () {
+	$("section.task button.next, section.task button.prev, section.task button.done").click(function () {
+		var el = $(this);
 		$("html,body").animate({
-			scrollTop:$($(this).attr("href")).offset().top - 100
-		}, 500);
-		return false;
+			scrollTop:$(el.attr("href")).offset().top - 100
+		}, 1000);
 	});
 });
 
@@ -117,8 +118,6 @@ function resetWorkflow() {
 	// 	.prop("disabled", true);
 	// $('section.task.active').find('input, textarea, button')
 	// 	.prop("disabled", false);
-		
-	refreshUI();
 }
 
 function nextTask() {
@@ -129,6 +128,8 @@ function nextTask() {
 	// 	.prop("disabled", true);
 	// $('section.task.active').find('input, textarea, button')
 	// 	.prop("disabled", false);
-		
-	refreshUI();
+}
+
+function prevTask() {
+	$('section.task.active').prev().addClass('active').next().removeClass('active');
 }

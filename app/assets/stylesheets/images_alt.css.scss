@@ -15,10 +15,8 @@ nav {
 }
 
 nav, section {
-	transition-duration: 0.5s;
-	transition-property: width, margin;
-	-webkit-transition-duration: 0.5s;
-	-webkit-transition-property: width, margin;
+	transition: background-color 2s, color 2s, width 500ms, margin 500ms, height 1s;
+	-webkit-transition: background-color 2s, color 2s, width 500ms, margin 500ms, height 1s;
 }
 
 .ui-widget {
@@ -49,7 +47,7 @@ section.task {
 		background: #eeeeee;
 	}
 	
-	button.next, button.done { 
+	button.next, button.prev, button.done { 
 		display: none; 
 		float: right;
 	}
@@ -62,7 +60,7 @@ section.task {
 		background: #eee;
 		color: black;
 
-		button.next, button.done { 
+		button.next, button.prev, button.done { 
 			display: block; 
 		}
 
@@ -70,10 +68,7 @@ section.task {
 	}
 }
 
-section {
-	transition-property: background-color, color;
-	transition-duration: 2s;
-	
+section {	
 	.pre, .actions, .post { float: left; }
 	.actions button { display: block; }
 	#pre, #post { 
@@ -232,6 +227,10 @@ button { padding: 5px; }
 	border: 1px solid black;
 	color: black;
 	span { color: red; }
+}
+
+section.fixed.full {
+	width: 100%;
 }
 
 @media screen and (max-height: 320px) {

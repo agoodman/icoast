@@ -2,8 +2,8 @@ Usgs::Application.routes.draw do
 
   devise_for :users, controllers: { sessions: :sessions, registrations: :registrations, passwords: :passwords }
 
-  get '/images' => 'images#index'
-  get '/images/alt' => 'images#alt'
+  get '/images' => 'images#alt'
+  get '/images/alt' => 'images#index'
   get '/images/pre' => 'images#index_pre'
   get '/images/post' => 'images#index_post'
   get '/images/post/random' => 'images#random_post'
