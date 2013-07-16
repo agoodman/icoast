@@ -11,13 +11,13 @@
 		$("#next-post, #post-thumb2").click(function() { iCoast.showPost(gPostPosition+1) });
 		$("#find-pre").click(function() { iCoast.findNearestPre(gPostPosition+1) });
 		$("#find-post").click(function() { iCoast.findNearestPost(gPrePosition+1) });
-		$("#show-map").click(function() { iCoast.showMap(); });
-		$("#shuffle-post").click(function() { iCoast.findRandomPost(); });
+		$("#show-map, nav .map").click(iCoast.showMap);
+		$("#shuffle-post").click(iCoast.findRandomPost);
 
 		$("#pre, #pre-thumb0, #pre-thumb1, #pre-thumb2, #post, #post-thumb0, #post-thumb1, #post-thumb2").load(function() { $(this).removeClass('loading'); });
 		$("#pre").loupe({loupe: 'pre-loupe'});
 		$("#post").loupe({loupe: 'post-loupe'});
-		$("nav .map").click(iCoast.showMap);
+
 		$(document).keyup(function(e) {
 			if( e.keyCode==27 ) {
 				iCoast.hideMap();
@@ -25,16 +25,18 @@
 			}
 		});
 
-		$("section.task button.next").click(function() { iCoast.nextTask(); });
-		$("section.task button.prev").click(function() { iCoast.prevTask(); });
-		$("section.task button.done").click(function() { iCoast.resetWorkflow(); });
+		$("section.task button.next").click(iCoast.nextTask);
+		$("section.task button.prev").click(iCoast.prevTask);
+		$("section.task button.done").click(iCoast.resetWorkflow);
 
 		$("section.task button.next, section.task button.prev, section.task button.done").click(function () {
 			var el = $(this);
 			$("html,body").animate({
-				scrollTop:$(el.attr("href")).offset().top - 100
+				scrollTop:$(el.attr("href")).offset().top
 			}, 1000);
 		});
+		
+		iCoast.initializeMap();
 	};
 	
 	base.showPre = function(imageId) {
@@ -84,7 +86,7 @@
 	};
 
 	base.loadMarkers = function(map,pre,page,perPage) {
-		$.getJSON('/images/'+(pre?'pre':'post')+'.json?page='+page+'&per_page='+perPage+'&only=position,latitude,longitude,position', function(data) {
+		$.getJSON('/images/'+(pre?'pre':'post')+'.json?page='+page+'&per_page='+perPage+'&only=position,latitude,longitude', function(data) {
 			if( data.length!=0 ) {
 				base.loadMarkers(map,pre,page+1,perPage);
 			}
@@ -122,7 +124,7 @@
 				// loadMarkers(map, true, 1, 1000);
 				base.loadMarkers(map, false, 1, 1000);
 			}
-		}, 750);
+		}, 1000);
 	};
 
 	base.hideMap = function() {
@@ -132,7 +134,7 @@
 				markers[k].setMap(null);
 			};
 			markers.length = 0;
-		}, 750);
+		}, 1000);
 	};
 
 	base.resetWorkflow = function() {
@@ -166,5 +168,3 @@
 	};
 	
 })(window.iCoast = window.iCoast || {}, $);
-
-$(iCoast.init);
