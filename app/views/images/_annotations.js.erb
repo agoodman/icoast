@@ -6,4 +6,4 @@ $('<%= my_annotations.map {|e| "##{dom_id(e.tag)}"}.join(", ") %>').prop("checke
 $('#<%= dom_id(annotation.tag) %>').attr("annotation_id",<%= annotation.id %>);
 <% end -%>
 <% end -%>
-$("nav").html("<%= escape_javascript(render(partial: 'last_annotation', locals: { image: @image })) %>");
+$("nav h2").html("<%= escape_javascript(render(partial: 'last_annotation', locals: { image: @image })) %>");

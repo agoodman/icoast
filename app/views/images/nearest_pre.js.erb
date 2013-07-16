@@ -10,7 +10,7 @@ $(".pre h1").html("<%= escape_javascript(render(partial: 'title')) %>");
 gPrePosition = <%= @image.position %>;
 gPreId = <%= @image.id %>;
 
-matchExists(gPreId,gPostId,function(exists) {
+iCoast.matchExists(gPreId,gPostId,function(exists) {
 	$("#match_yes").prop("checked",exists);
 	$("#match_no").prop("checked",!exists);
 });

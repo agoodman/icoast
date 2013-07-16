@@ -1,10 +1,14 @@
 console.log("loading post image <%= @image.full_url %>");
 $("#post, .post-loupe img").attr("src","<%= @image.full_url %>");
 
-gPostPosition = <%= @image.position %>;
 gPostId = <%= @image.id %>;
+gPostPosition = <%= @image.position %>;
+gPostLatitude = <%= @image.latitude %>;
+gPostLongitude = <%= @image.longitude %>;
 
 $(".post h1").html("<%= escape_javascript(render(partial: 'title')) %>");
+
+<%= render partial: 'static_map', locals: { image: @image } %>
 
 <%= render partial: 'annotations', locals: { image: @image } %>
 
@@ -14,7 +18,6 @@ $("#comment").val('<%= escape_javascript(comment.body) %>').attr("comment_id", <
 $("#comment").val(null).attr("comment_id", null);
 <% end -%>
 
-findNearestPre(<%= @image.position %>);
+iCoast.findNearestPre(<%= @image.position %>);
 
-resetWorkflow();
-refreshUI();
+iCoast.resetWorkflow();

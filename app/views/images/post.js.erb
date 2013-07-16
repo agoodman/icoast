@@ -1,8 +1,10 @@
 console.log("loading post image <%= @image.full_url %>");
 $("#post, .post-loupe img").attr("src","<%= @image.full_url %>");
 
-gPostPosition = <%= @image.position %>;
 gPostId = <%= @image.id %>;
+gPostPosition = <%= @image.position %>;
+gPostLatitude = <%= @image.latitude %>;
+gPostLongitude = <%= @image.longitude %>;
 
 $("#post-thumb0").attr("src","<%= @thumbs[0] %>");
 $("#post-thumb1").attr("src","<%= @thumbs[1] %>");
@@ -13,12 +15,14 @@ $(".post h1").html("<%= escape_javascript(render(partial: 'title')) %>");
 <% if (matches=@image.matches.for_user(current_user)).any? -%>
 $("#match_yes").prop("checked",true);
 $("#match_no").prop("checked",false).attr("match_id",<%= matches.first.id %>);
-showPre(<%= matches.first.pre_image.position %>);
+iCoast.showPre(<%= matches.first.pre_image.position %>);
 <% else %>
 $("#match_yes").prop("checked",false);
 $("#match_no").prop("checked",true);
-findNearestPre(gPostPosition);
+iCoast.findNearestPre(gPostPosition);
 <% end %>
+
+<%= render partial: 'static_map', locals: { image: @image } %>
 
 <%= render partial: 'annotations', locals: { image: @image } %>
 
@@ -28,4 +32,4 @@ $("#comment").val('<%= escape_javascript(comment.body) %>').attr("comment_id", <
 $("#comment").val(null).attr("comment_id", null);
 <% end -%>
 
-resetWorkflow();
+iCoast.resetWorkflow();

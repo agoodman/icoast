@@ -1,3 +1,21 @@
+%section.map
+	#map
+	#legend
+		%p
+			Zoom-in and Click a 
+			%span RED DOT
+			to Annotate a Post-Storm Photo
+		%p
+			Press 
+			%strong ESC 
+			to cancel
+		%p
+			%strong Current Post-Storm Photo - YELLOW
+		%p{style: 'color:red'}
+			%strong Post-Storm Photo - RED
+		%p{style: 'color:green'}
+			%strong Annotated Photo - GREEN
+
 %section.fixed
 	.post
 		%h1 POST
@@ -14,6 +32,9 @@
 				%img#pre-thumb2{src: nil}
 
 %nav
+	%h2 Loading
+	%img.map{alt: 'map thumbnail'}
+	
 %section.task#task-select
 	%h3 Select Photo
 	%p
@@ -71,15 +92,10 @@
 	%button.done{href: '#task-select'} Done
 	%button.prev{href: '#task-visual'} Prev
 
-#map{style: 'display:none'}
-#legend{style: 'display:none'}
-	Zoom-in and Click a 
-	%span RED DOT
-	to Annotate a Post-Storm Photo
-
 :javascript
 	var gPrePosition = #{ @pre_position };
 	var gPostPosition = #{ @post_position };
 	var gPostId = 0;
 	var gPreId = 0;
-	showPost(gPostPosition);
+	var gPostLatitude, gPostLongitude;
+	iCoast.showPost(gPostPosition);

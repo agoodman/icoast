@@ -19,13 +19,17 @@ class ImagesController < ApplicationController
   end
   
   def index_pre
-    @images = Image.pre.order('position').paginate(page: params[:page], per_page: params[:per_page])
-    respond_with(@images, only: params[:only].split(',').map(&:to_sym))
+    @images = Image.pre.includes(:annotations).order('position').paginate(page: params[:page], per_page: params[:per_page])
+    respond_to do |format|
+      format.json { render json: @images.as_json(only: (params[:only].split(',').map(&:to_sym) rescue []), user_id: current_user.id) }
+    end
   end
   
   def index_post
-    @images = Image.post.enabled.order('position').paginate(page: params[:page], per_page: params[:per_page])
-    respond_with(@images, only: params[:only].split(',').map(&:to_sym))
+    @images = Image.post.enabled.includes(:annotations).order('position').paginate(page: params[:page], per_page: params[:per_page])
+    respond_to do |format|
+      format.json { render json: @images.as_json(only: (params[:only].split(',').map(&:to_sym) rescue []), user_id: current_user.id) }
+    end
   end
   
   def pre
