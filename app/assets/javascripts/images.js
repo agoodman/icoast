@@ -1,44 +1,42 @@
-$(function() {
-	$("#prev-pre, #pre-thumb0").click(function() { iCoast.showPre(gPrePosition-1); });
-	$("#next-pre, #pre-thumb2").click(function() { iCoast.showPre(gPrePosition+1); });
-	$("#prev-post, #post-thumb0").click(function() { iCoast.showPost(gPostPosition-1) });
-	$("#next-post, #post-thumb2").click(function() { iCoast.showPost(gPostPosition+1) });
-	$("#find-pre").click(function() { iCoast.findNearestPre(gPostPosition+1) });
-	$("#find-post").click(function() { iCoast.findNearestPost(gPrePosition+1) });
-	$("#show-map").click(function() { iCoast.showMap(); });
-	$("#shuffle-post").click(function() { iCoast.findRandomPost(); });
-	
-	$("#pre, #pre-thumb0, #pre-thumb1, #pre-thumb2, #post, #post-thumb0, #post-thumb1, #post-thumb2").load(function() { $(this).removeClass('loading'); });
-	$("#pre").loupe({loupe: 'pre-loupe'});
-	$("#post").loupe({loupe: 'post-loupe'});
-	$("nav .map").click(function() { 
-		iCoast.showMap();
-	});
-	$(document).keyup(function(e) {
-		if( e.keyCode==27 ) {
-			iCoast.hideMap();
-			e.preventDefault();
-		}
-	});
-	
-	$("section.task button.next").click(function() { iCoast.nextTask(); });
-	$("section.task button.prev").click(function() { iCoast.prevTask(); });
-	$("section.task button.done").click(function() { iCoast.resetWorkflow(); });
-
-	$("section.task button.next, section.task button.prev, section.task button.done").click(function () {
-		var el = $(this);
-		$("html,body").animate({
-			scrollTop:$(el.attr("href")).offset().top - 100
-		}, 1000);
-	});
-});
-
 (function(base,$) {
 
 	var markers = [];
 	var map;
 	var mapInitialized = false;
 
+	base.init = function() {
+		$("#prev-pre, #pre-thumb0").click(function() { iCoast.showPre(gPrePosition-1); });
+		$("#next-pre, #pre-thumb2").click(function() { iCoast.showPre(gPrePosition+1); });
+		$("#prev-post, #post-thumb0").click(function() { iCoast.showPost(gPostPosition-1) });
+		$("#next-post, #post-thumb2").click(function() { iCoast.showPost(gPostPosition+1) });
+		$("#find-pre").click(function() { iCoast.findNearestPre(gPostPosition+1) });
+		$("#find-post").click(function() { iCoast.findNearestPost(gPrePosition+1) });
+		$("#show-map").click(function() { iCoast.showMap(); });
+		$("#shuffle-post").click(function() { iCoast.findRandomPost(); });
+
+		$("#pre, #pre-thumb0, #pre-thumb1, #pre-thumb2, #post, #post-thumb0, #post-thumb1, #post-thumb2").load(function() { $(this).removeClass('loading'); });
+		$("#pre").loupe({loupe: 'pre-loupe'});
+		$("#post").loupe({loupe: 'post-loupe'});
+		$("nav .map").click(iCoast.showMap);
+		$(document).keyup(function(e) {
+			if( e.keyCode==27 ) {
+				iCoast.hideMap();
+				e.preventDefault();
+			}
+		});
+
+		$("section.task button.next").click(function() { iCoast.nextTask(); });
+		$("section.task button.prev").click(function() { iCoast.prevTask(); });
+		$("section.task button.done").click(function() { iCoast.resetWorkflow(); });
+
+		$("section.task button.next, section.task button.prev, section.task button.done").click(function () {
+			var el = $(this);
+			$("html,body").animate({
+				scrollTop:$(el.attr("href")).offset().top - 100
+			}, 1000);
+		});
+	};
+	
 	base.showPre = function(imageId) {
 		base.loadingPre();
 		$.getScript("/images/pre/"+imageId+".js");
@@ -114,19 +112,17 @@ $(function() {
 	};
 
 	base.showMap = function() {
-		if( !mapInitialized ) {
-			base.initializeMap();
-		}
-		$("section.map").addClass("open");
+		base.initializeMap();
 		map.setCenter(new google.maps.LatLng(gPostLatitude, gPostLongitude));
 		map.setZoom(12);
+		$("section.map").addClass("open");
 		setTimeout(function() {
 			if( markers.length==0 ) {
 				// load placemarks for images
 				// loadMarkers(map, true, 1, 1000);
 				base.loadMarkers(map, false, 1, 1000);
 			}
-		}, 500);
+		}, 750);
 	};
 
 	base.hideMap = function() {
@@ -136,7 +132,7 @@ $(function() {
 				markers[k].setMap(null);
 			};
 			markers.length = 0;
-		}, 500);
+		}, 750);
 	};
 
 	base.resetWorkflow = function() {
@@ -170,3 +166,5 @@ $(function() {
 	};
 	
 })(window.iCoast = window.iCoast || {}, $);
+
+$(iCoast.init);
