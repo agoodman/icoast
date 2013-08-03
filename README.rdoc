@@ -1,4 +1,4 @@
-== USGS iCoast
+== iCoast
 
 iCoast is a web application designed to facilitate crowd-sourcing of information describing the impact of storms on the coastline.
 
