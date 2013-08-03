@@ -22,9 +22,7 @@ class Image < ActiveRecord::Base
   end
 
   def as_json(options={})
-    puts "calling as_json with user id: #{options[:user_id]}"
     json = super(options)
-    puts "super returned #{json}"
     json['annotated'] = annotated(options[:user_id]) if options[:user_id]
     json
   end
@@ -39,7 +37,6 @@ class Image < ActiveRecord::Base
   end
   
   def annotated(user_id)
-    puts "calling annotated with user id: #{user_id}"
     annotations.select {|e| e.user_id.to_i==user_id.to_i}.any?
   end
   
