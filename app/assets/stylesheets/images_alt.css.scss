@@ -319,15 +319,27 @@ section.fixed.full {
 	section.fixed { width: 460px; }
 	nav, section.task { margin-left: 460px; }
 }
-@media screen and (min-height: 961px) and (max-height: 1080px) {
+@media screen and (min-height: 961px) and (max-height: 1000px) {
 	section.fixed { width: 500px; }
 	nav, section.task { margin-left: 500px; }
 }
-@media screen and (min-height: 1081px) and (max-height: 1200px) {
+@media screen and (min-height: 1001px) and (max-height: 1200px) {
 	section.fixed { width: 560px; }
 	nav, section.task { margin-left: 560px; }
 }
-@media screen and (min-height: 1201px) {
+@media screen and (min-height: 1201px) and (max-height: 1400px) {
 	section.fixed { width: 620px; }
 	nav, section.task { margin-left: 620px; }
+}
+@media screen and (min-height: 1401px) and (max-height: 1600px) {
+	section.fixed { width: 720px; }
+	nav, section.task { margin-left: 720px; }
+}
+@media screen and (min-height: 1601px) and (max-height: 1800px) {
+	section.fixed { width: 840px; }
+	nav, section.task { margin-left: 840px; }
+}
+@media screen and (min-height: 1801px) {
+	section.fixed { width: 960px; }
+	nav, section.task { margin-left: 960px; }
 }
