@@ -34,6 +34,22 @@ img.loading {
 	opacity: 0.25;
 }
 
+button.next:after {
+	content: '';
+	display: block;
+	border-style: solid;
+	border-width: 30px 20px 0 20px;
+	border-color: black transparent transparent transparent;
+}
+
+button.prev:after {
+	content: '';
+	display: block;
+	border-style: solid;
+	border-width: 0 20px 30px 20px;
+	border-color: transparent transparent black transparent;
+}
+
 @media (screen) and (max-width: 320px) { body { font-size: 9pt; } }
 @media (screen) and (max-width: 480px) and (min-width: 321px) { body { font-size: 10pt; } }
 @media (screen) and (max-width: 768px) and (min-width: 481px)  { body { font-size: 11pt; } }
