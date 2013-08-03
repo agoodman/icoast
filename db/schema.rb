@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130710155840) do
+ActiveRecord::Schema.define(:version => 20130803202242) do
 
   create_table "annotations", :force => true do |t|
     t.integer   "image_id"
@@ -42,9 +42,9 @@ ActiveRecord::Schema.define(:version => 20130710155840) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "groups", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string    "name"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   create_table "images", :force => true do |t|
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(:version => 20130710155840) do
     t.string    "locality"
     t.string    "city"
     t.string    "state"
-    t.datetime  "geocoded_at"
+    t.timestamp "geocoded_at"
   end
 
   add_index "images", ["position"], :name => "index_images_on_position"
@@ -105,6 +105,8 @@ ActiveRecord::Schema.define(:version => 20130710155840) do
     t.string    "last_sign_in_ip"
     t.timestamp "created_at",                            :null => false
     t.timestamp "updated_at",                            :null => false
+    t.string    "crowd_type"
+    t.string    "affiliation"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

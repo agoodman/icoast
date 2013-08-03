@@ -3,16 +3,26 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+	<div style="float:left">
+	  <div><%= f.label :email %><br />
+	  <%= f.email_field :email, :autofocus => true %></div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+	  <div><%= f.label :password %><br />
+	  <%= f.password_field :password %></div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+	  <div><%= f.label :password_confirmation %><br />
+	  <%= f.password_field :password_confirmation %></div>
+	</div>
 
-  <div><%= f.submit "Sign up" %></div>
+	<div style="float:right">
+		<div><%= f.label :affiliation %><br/>
+		<%= f.text_field :affiliation %></div>
+			
+		<div><%= f.label :crowd_type %><br/>
+		<%= f.select :crowd_type, ['Coastal Science Expert', 'Coastal Science Student', 'Coastal Manager', 'Coastal Planner', 'Coastal Resident', 'Digital Volunteer'], include_blank: true %></div>
+	</div>
+
+  <div style="clear:both"><%= f.submit "Sign up" %></div>
 <% end %>
 
 <%= render "devise/shared/links" %>
