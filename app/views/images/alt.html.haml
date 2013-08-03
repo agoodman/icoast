@@ -6,15 +6,12 @@
 			%span RED DOT
 			to Annotate a Post-Storm Photo
 		%p
-			Press 
+			Click HERE or Press 
 			%strong ESC 
 			to cancel
-		%p
-			%strong Current Post-Storm Photo - YELLOW
-		%p{style: 'color:red'}
-			%strong Post-Storm Photo - RED
-		%p{style: 'color:green'}
-			%strong Annotated Photo - GREEN
+		%p.yellow.star Current Post-Storm Photo
+		%p.red.dot Post-Storm Photo
+		%p.green.dot Annotated Photo
 
 %section.fixed
 	.post
@@ -50,7 +47,7 @@
 	%h3 Photo Match
 	%p
 		%label Step 2:
-		Does the Pre-Storm photo sufficiently match the Post-Storm photo?
+		Find the best Pre-Storm photo that matches the Post-Storm photo.
 	%p (Click the thumbnails below the Pre-Storm photo to find a better match.)
 	%ul.match
 		%li
@@ -64,9 +61,9 @@
 	%h3 Coastal Change Regimes
 	%p
 		%label Step 3:
-		What 
-		%strong= link_to 'Coastal Change Regimes', 'http://coastal.er.usgs.gov/hurricanes/impact-scale/', target: '_blank'
-		do you mainly see?
+		Select the 
+		= link_to 'Coastal Change Regime(s)', 'http://coastal.er.usgs.gov/hurricanes/impact-scale/', target: '_blank'
+		that likely occurred in the Post-Storm photo.
 	%ul.regimes
 		- for tag in @regimes
 			%li
@@ -78,7 +75,7 @@
 	%h3 Visual Coastal Changes
 	%p
 		%label Step 4:
-		What coastal changes do you see?
+		Indicate what changes to the coast you can see in the Post-Storm photo.
 	- for group in @groups
 		- unless group.name.blank?
 			%h4= group.name
