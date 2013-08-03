@@ -7,6 +7,9 @@ var mapInitialized = false;
 
 $(function() {
 	initializeMap();
+	$('#upload_images').click(function() {
+		$('#new_image').show();
+	});
 });
 
 function loadMarkers(map,pre,callback) {

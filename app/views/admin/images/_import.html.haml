@@ -1,0 +1,5 @@
+= form_for [:admin,Image.new], url: '/admin/images/import', method: :post, html: { style: 'display:none', multipart: true } do |f|
+	= f.file_field :file
+	= f.submit 'Upload'
+	= link_to_function 'Cancel', '$("#new_image").hide()'
+

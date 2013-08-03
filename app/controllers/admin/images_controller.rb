@@ -18,5 +18,29 @@ class Admin::ImagesController < ApplicationController
     @images = Image.post.enabled
     respond_with(@images, only: params[:only].split(',').map(&:to_sym))
   end
+
+  def import
+    csv = CSV.parse(params[:file].tempfile, headers: true)
+    for row in csv
+      year = row["YEAR1"].to_i
+      month = Date::MONTHNAMES.index(row["MONTH_"])
+      day = row["DAY1"].to_i
+      hour, min, sec = row["HR_MIN_SEC"].split("_").map(&:to_i)
+      taken = Time.utc(year, month, day, hour, min, sec)
+      attrs = { 
+        filename: row["SLIDE"], 
+        full_url: row["FULL_SLIDE"], 
+        thumb_url: row["THUMBNAIL_"], 
+        geo_area: row["GEO_AREA"], 
+        pre: row["PRE_POST"].downcase=="pre", 
+        storm: row["STORM"], 
+        latitude: row["LATITUDE"], 
+        longitude: row["LONGITUDE"], 
+        taken_at: taken
+      }
+      Image.create!(attrs) unless Image.where(attrs).exists?
+    end
+    redirect_to admin_images_path
+  end
   
 end
