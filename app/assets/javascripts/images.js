@@ -94,7 +94,7 @@
 			$.each(data, function(key,val) {
 				var annotated = val.annotated;
 				var isCurrentPost = !pre && val.position==gPostPosition;
-				var icon = '/assets/' + (pre?'blue-dot':(isCurrentPost?'yellow-star':(annotated?'green-dot':'red-dot'))) + '.png';
+				var icon = '/assets/' + (pre?'blue-dot':(isCurrentPost?'yellow-star-border':(annotated?'green-dot':'red-dot'))) + '.png';
 				var marker = new google.maps.Marker({
 					position: new google.maps.LatLng(val.latitude,val.longitude), 
 					map: map,
