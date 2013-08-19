@@ -6,5 +6,7 @@ class ImageTest < ActiveSupport::TestCase
   should have_many :tags
   should have_many :matches
   should have_many :comments
+  should have_many :visits
+  should have_many :visitors
   
 end

@@ -12,5 +12,11 @@ class User < ActiveRecord::Base
   has_many :tags
   has_many :matches
   has_many :comments
+  has_many :visits
+  has_many :visited_images, through: :visits, source: :image, class_name: 'Image'
+  
+  def visit!(image)
+    visits.create(image_id: image.id)
+  end
   
 end

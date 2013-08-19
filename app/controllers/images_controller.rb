@@ -35,12 +35,14 @@ class ImagesController < ApplicationController
   def pre
     @image = Image.pre.where(position: params[:position]).first
     load_thumbs
+    current_user.visit!(@image)
     respond_with(@image)
   end
   
   def post
     @image = Image.post.enabled.includes(annotations: :tag).where(position: params[:position]).first
     load_thumbs
+    current_user.visit!(@image)
     respond_with(@image)
   end
   
@@ -64,6 +66,7 @@ class ImagesController < ApplicationController
   
   def random_post
     @image = Image.post.enabled.random(Image.post.enabled.count).first
+    current_user.visit!(@image)
     respond_with(@image)
   end
   
