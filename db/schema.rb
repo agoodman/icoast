@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130819153548) do
+ActiveRecord::Schema.define(:version => 20130819212332) do
 
   create_table "annotations", :force => true do |t|
     t.integer   "image_id"
@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(:version => 20130819153548) do
     t.string    "city"
     t.string    "state"
     t.timestamp "geocoded_at"
+    t.float     "normal_x"
+    t.float     "normal_y"
   end
 
   add_index "images", ["position"], :name => "index_images_on_position"

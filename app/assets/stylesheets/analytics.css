@@ -10,6 +10,6 @@
  *
  *= require_self
  *= require common
- *= require admin/common
- *= require admin/images
+ *= require analytics/common
+ *= require analytics/images
  */

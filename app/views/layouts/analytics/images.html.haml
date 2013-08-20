@@ -1,0 +1,26 @@
+= content_for :sub do
+	%nav.sub
+		%ul 
+			%li
+				%label Images:
+			%li= link_to 'PRE', '#', id: 'show-pre'
+			%li= link_to 'POST', '#', id: 'show-post'
+			%li= link_to 'ALL', '#', id: 'show-all'
+		%ul
+			%li
+				%label Enabled Only?
+			%li
+				%input{type: 'radio', id: 'enabled_no', name: 'enabled', value: false} 
+				%label{for: 'enabled_no'} NO
+				%input{type: 'radio', id: 'enabled_yes', name: 'enabled', value: true}
+				%label{for: 'enabled_yes'} YES
+		- if false
+			%ul
+				%li
+					%label Show Classifications?
+				%li= link_to 'NO', '#'
+				%li= link_to 'YES', '#'
+		= image_tag('ajax-loader.gif', id: 'loading', style: 'display:none')
+		%button#refresh-images Update
+			
+= render file: 'layouts/analytics'

@@ -1,19 +1,15 @@
-#map
-
-= image_tag('ajax-loader.gif', id: 'loading', style: 'display:none')
-
 %h1 Totals
 %p
 	%label Users
-	%span= User.count
+	%span= @users.count
 %p
 	%label Classifications
-	%span= Annotation.count
+	%span= @annotations.count
 %p
 	%label Photo Matches
-	%span= Match.count
+	%span= @matches.count
 	
-- for tag in Tag.regime
+- for tag in @tags.regime
 	%p
 		%label= tag.name
 		%span= tag.annotations.count

@@ -1,21 +1,19 @@
 class Admin::ImagesController < ApplicationController
   
-  layout 'admin'
-  
   respond_to :html, :js, :json
   
   def index
-    @images = Image.scoped
+    @images = Image.paginate(page: params[:page] || 1, per_page: params[:per_page] || 100)
     respond_with(@images)
   end
   
   def index_pre
-    @images = Image.pre
+    @images = Image.pre.paginate(page: params[:page] || 1, per_page: params[:per_page] || 100)
     respond_with(@images, only: params[:only].split(',').map(&:to_sym))
   end
   
   def index_post
-    @images = Image.post.enabled
+    @images = Image.post.enabled.paginate(page: params[:page] || 1, per_page: params[:per_page] || 100)
     respond_with(@images, only: params[:only].split(',').map(&:to_sym))
   end
 

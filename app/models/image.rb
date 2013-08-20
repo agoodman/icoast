@@ -1,3 +1,4 @@
+require 'position_normal_strategy'
 class Image < ActiveRecord::Base
   
   DELTA = 0.001
@@ -54,9 +55,25 @@ class Image < ActiveRecord::Base
     self.state = geo.address_components.select {|e| e['types'].include?('administrative_area_level_1')}.first['short_name'] rescue nil
     self.geocoded_at = Time.now
     save
-  rescue
+  rescue Exception => e
+    puts "error: #{e}"
     false
   end
   
+  def normal?
+    !normal_x.blank? && !normal_y.blank?
+  end
+  
+  def calculate_normal!
+    puts "calculating normal for image #{id}"
+    strategy = PositionNormalStrategy
+    nx, ny = strategy.normal_for(self)
+    self.normal_x = nx
+    self.normal_y = ny
+    save
+  rescue Exception => e
+    puts "error: #{e}"
+    false
+  end
   
 end

@@ -1,17 +1,5 @@
-#map.admin{style: 'display:none'}
-%nav
-	%ul
-		%li
-			%button#upload_images Upload CSV
-			= render partial: 'import'
-		%li
-			Sort By: 
-			%button A-Z
-			%button Z-A
-			%button Newest
-			%button Oldest
 %section.data
-	%table
+	%table#list
 		%tr
 			%th LAT
 			%th LNG

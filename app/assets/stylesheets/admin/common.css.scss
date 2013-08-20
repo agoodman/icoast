@@ -1,0 +1,38 @@
+nav {
+	background: #eee;
+	a {
+		padding: 10px;
+		float: left;
+		display: block;
+		background: #333;
+		color: #eee;
+		text-decoration: none;
+		&.active {
+			background: white;
+			color: black;
+		}
+	}
+	ul {
+		float: left;
+		li {
+			margin: 0;
+			padding: 0;
+		}
+	}
+	&:after {
+		content: '.';
+		visibility: hidden;
+		display: block;
+		height: 0;
+		clear: both;
+	}
+}
+
+nav.sub {
+	background: #888;
+	padding: 5px;
+	box-sizing: border-box;
+	a {
+		padding: 5px;
+	}
+}

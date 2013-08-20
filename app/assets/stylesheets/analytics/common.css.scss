@@ -1,0 +1,92 @@
+nav {
+	background: #eee;
+	a, button {
+		font-size: 1em;
+		padding: 10px;
+		float: left;
+		display: block;
+		background: #333;
+		color: #eee;
+		text-decoration: none;
+		border: none;
+		&.active {
+			background: white;
+			color: black;
+		}
+	}
+	ul {
+		float: left;
+		margin-left: 25px;
+		li {
+			margin: 0;
+			padding: 0;
+		}
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+	button#refresh-images {
+		float: right;
+	}
+	&:after {
+		content: '.';
+		visibility: hidden;
+		display: block;
+		height: 0;
+		clear: both;
+	}
+}
+
+nav.sub {
+	background: #888;
+	padding: 5px;
+	box-sizing: border-box;
+	a {
+		padding: 5px;
+	}
+	a.active {
+		background: #44a;
+		color: #eee;
+	}
+	input[type='checkbox'], input[type='radio'] {
+		margin: 0;
+		display: none;
+	}
+	input[type='checkbox'] + label, input[type='radio'] + label {
+		padding: 5px;
+		display: block;
+		float: left;
+	}
+	input[type='checkbox'] + label,
+	input[type='radio'] + label {
+		background: #333;
+		color: #eee;
+	}
+	input:checked + label { 
+		background: #44a;
+		color: #eee;
+	}
+}
+
+#map {
+	position: absolute;
+	top: 100px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+p {
+	background: white;
+	margin: 0 10px;
+	padding: 5px;
+	label { min-width: 100px; }
+	span { 
+		float: right; 
+		margin-right: 25px;
+	}
+}
+
+p:nth-child(2n) {
+	background: #efefef;
+}

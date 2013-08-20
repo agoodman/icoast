@@ -2,14 +2,15 @@
 %html
 	%head
 		%title iCoast
-		= stylesheet_link_tag "admin", :media => "all"
-		= javascript_include_tag "admin"
+		= stylesheet_link_tag "analytics", :media => "all"
+		= javascript_include_tag "analytics"
 		= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyCAr75Uh-nZwi3N1c6lbD40AOpcAMJl2yU&sensor=true"
 		= csrf_meta_tags
-	%body
+	%body{onload: 'iCoast.init()'}
 		%nav
 			= link_to '< Classify', images_path
-			= link_to 'Admin', admin_images_path, class: 'active'
-			= link_to 'Analytics', analytics_images_path
+			- if false
+				= link_to 'Admin', admin_images_path
+			= link_to 'Analytics', analytics_images_path, class: 'active'
 		= yield :sub
 		= yield

@@ -6,7 +6,7 @@ var matchHash = {};
 var mapInitialized = false;
 
 $(function() {
-	initializeMap();
+	// initializeMap();
 	$('#upload_images').click(function() {
 		$('#new_image').show();
 	});

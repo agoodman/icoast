@@ -1,0 +1,2 @@
+module Analytics::AnnotationsHelper
+end
