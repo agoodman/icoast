@@ -20,12 +20,12 @@
 			only: 'latitude,longitude,id,pre'
 		};
 		if( base.showPre && !base.showPost && !base.showAll ) {
-			options['where']['images']['pre'] = 't';
+			options['where']['images']['pre'] = true;
 		}else if( !base.showPre && base.showPost && !base.showAll ) {
-			options['where']['images']['pre'] = 'f';
+			options['where']['images']['pre'] = false;
 		}
 		if( base.showEnabled ) {
-			options['where']['images']['enabled'] = 't';
+			options['where']['images']['enabled'] = true;
 		}
 		console.log("showImages -> start{"+JSON.stringify(options)+"}");
 		
