@@ -76,6 +76,17 @@ nav.sub {
 	bottom: 0;
 }
 
+#detail {
+	position: absolute;
+	top: 120px;
+	right: 20px;
+	bottom: 20px;
+	width: 20%;
+	background: #eee;
+	border: 1px solid black;
+	overflow: scroll;
+}
+
 p {
 	background: white;
 	margin: 0 10px;

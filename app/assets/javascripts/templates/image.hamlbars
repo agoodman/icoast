@@ -1,0 +1,18 @@
+%button.close Close
+%h2 Matches ({{matches.count}})
+%ul
+	{{#each matches.uniques}}
+	%li {{value}} ({{count}})
+	{{/each}}
+
+%h2 Coastal Regime Changes ({{regimes.count}})
+%ul
+	{{#each regimes.uniques}}
+	%li {{value}} ({{count}})
+	{{/each}}
+
+%h2 Annotations ({{annotations.count}})
+%ul
+	{{#each annotations.uniques}}
+	%li {{value}} ({{count}})
+	{{/each}}

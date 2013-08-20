@@ -63,6 +63,9 @@
 			var checked = $(this).prop("checked");
 			base.showEnabled = !checked;
 		});
+		$('#detail .close').click(function() {
+			$('#detail').hide();
+		});
 	};
 	
 	base.initMap = function() {
