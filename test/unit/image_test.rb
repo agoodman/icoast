@@ -8,5 +8,7 @@ class ImageTest < ActiveSupport::TestCase
   should have_many :comments
   should have_many :visits
   should have_many :visitors
+  should have_many :inclusions
+  should have_many :campaigns
   
 end

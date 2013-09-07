@@ -9,6 +9,8 @@ class Image < ActiveRecord::Base
   has_many :comments
   has_many :visits
   has_many :visitors, through: :visits, source: :user, class_name: 'User'
+  has_many :inclusions
+  has_many :campaigns, through: :inclusions
   
   attr_accessible :filename, :full_url, :geo_area, :latitude, :longitude, :pre, :storm, :taken_at, :thumb_url, :position, :enabled
   

@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :visits
   has_many :visited_images, through: :visits, source: :image, class_name: 'Image'
+  has_many :campaigns
   
   def visit!(image)
     visits.create(image_id: image.id)

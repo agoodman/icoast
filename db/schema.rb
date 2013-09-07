@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130819212332) do
+ActiveRecord::Schema.define(:version => 20130907230837) do
 
   create_table "annotations", :force => true do |t|
     t.integer   "image_id"
     t.integer   "tag_id"
-    t.timestamp "created_at", :null => false
-    t.timestamp "updated_at", :null => false
+    t.timestamp "created_at",  :null => false
+    t.timestamp "updated_at",  :null => false
     t.integer   "user_id"
+    t.integer   "campaign_id"
   end
 
   add_index "annotations", ["image_id", "tag_id", "user_id"], :name => "index_annotations_on_image_id_and_tag_id_and_user_id"
@@ -28,6 +29,14 @@ ActiveRecord::Schema.define(:version => 20130819212332) do
   add_index "annotations", ["tag_id", "user_id"], :name => "index_annotations_on_tag_id_and_user_id"
   add_index "annotations", ["tag_id"], :name => "index_annotations_on_tag_id"
   add_index "annotations", ["user_id"], :name => "index_annotations_on_user_id"
+
+  create_table "campaigns", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "comments", :force => true do |t|
     t.integer   "image_id"
@@ -71,6 +80,15 @@ ActiveRecord::Schema.define(:version => 20130819212332) do
 
   add_index "images", ["position"], :name => "index_images_on_position"
 
+  create_table "inclusions", :force => true do |t|
+    t.integer  "image_id"
+    t.integer  "campaign_id"
+    t.boolean  "pre"
+    t.integer  "position"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "matches", :force => true do |t|
     t.integer   "user_id"
     t.integer   "post_image_id"
@@ -81,6 +99,13 @@ ActiveRecord::Schema.define(:version => 20130819212332) do
 
   add_index "matches", ["pre_image_id", "post_image_id", "user_id"], :name => "index_matches_on_pre_image_id_and_post_image_id_and_user_id"
   add_index "matches", ["pre_image_id", "post_image_id"], :name => "index_matches_on_pre_image_id_and_post_image_id"
+
+  create_table "participants", :force => true do |t|
+    t.integer  "campaign_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "tags", :force => true do |t|
     t.string    "name"
