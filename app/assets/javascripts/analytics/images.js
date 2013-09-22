@@ -152,7 +152,10 @@
 				uniques.push({value: e, count: val});
 			});
 		}
-		return uniques;
+		var sortedUniques = uniques.sort(function(a,b) {
+			return a.count<b.count;
+		});
+		return sortedUniques;
 	};
 	
 	base.showPre = showPre;
