@@ -62,7 +62,7 @@
 	
 	base.requestImageDetail = function(imageId) {
 		var options = {
-			only: 'id,taken_at,latitude,longitude,pre',
+			only: 'id,taken_at,latitude,longitude,pre,thumb_url',
 			include: {
 				annotations: {
 					only: 'id,tag_id',
@@ -74,6 +74,9 @@
 				},
 				matches: {
 					only: 'id,pre_image_id,post_image_id'
+				},
+				comments: {
+					only: 'body'
 				}
 			}
 		};
@@ -85,6 +88,7 @@
 	};
 	
 	base.showImageDetail = function(xhr,msg,data) {
+		console.log(data.responseJSON);
 		$('#detail').
 			html(HandlebarsTemplates['image'](base.transformResponse(data.responseJSON))).
 			show();
@@ -107,6 +111,11 @@
 		var rsp = {
 			latitude: json.latitude,
 			longitude: json.longitude,
+			thumb_url: json.thumb_url,
+			comments: {
+				count: json.comments.length,
+				uniques: json.comments
+			},
 			regimes: {
 				count: regimes.length,
 				uniques: base.uniquesFor(regimes, function(e) {return e.tag.name;})

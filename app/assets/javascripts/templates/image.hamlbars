@@ -1,4 +1,6 @@
 %button.close Close
+%img.detail-thumb{src: "{{thumb_url}}"}
+
 %h2 Matches ({{matches.count}})
 %ul
 	{{#each matches.uniques}}
@@ -15,4 +17,10 @@
 %ul
 	{{#each annotations.uniques}}
 	%li {{value}} ({{count}})
+	{{/each}}
+
+%h2 Comments ({{comments.count}})
+%ul.detail-comments
+	{{#each comments.uniques}}
+	%li {{body}}
 	{{/each}}
